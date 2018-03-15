@@ -33,6 +33,14 @@ namespace primal {
 			glfwMakeContextCurrent(m_Window);
 			//	glfwSwapInterval(1);
 			glfwSetWindowSizeCallback(m_Window, [](GLFWwindow *wind, int w, int h) { glViewport(0, 0, w, h); });
+
+			if (glewInit() != GLEW_OK)
+			{
+				std::cout << "Fail to create glew lib" << '\n';
+				return false;
+			}
+
+			std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << '\n';
 			return true;
 		}
 
