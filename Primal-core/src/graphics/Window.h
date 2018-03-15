@@ -16,7 +16,11 @@ namespace primal {
 			Window(const char *title, int width, int heigth);
 			~Window();
 			bool closed() const;
-			void update() const;
+			void clear() const;
+			void update();
+
+			inline int getHeigth() const { return m_Heigth; }
+			inline int getWidth() const { return m_Width; }
 		private:
 			bool init();
 		};

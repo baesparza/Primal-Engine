@@ -32,18 +32,26 @@ namespace primal {
 			}
 			glfwMakeContextCurrent(m_Window);
 			//	glfwSwapInterval(1);
+			glfwSetWindowSizeCallback(m_Window, [](GLFWwindow *wind, int w, int h) { glViewport(0, 0, w, h); });
 			return true;
+		}
+
+		void Window::clear() const
+		{
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		}
+		
+		void Window::update()
+		{
+			glfwPollEvents();
+			/// enable changes on window class variables
+			//	glfwGetFramebufferSize(m_Window, &m_Width, &m_Heigth);
+			glfwSwapBuffers(m_Window);
 		}
 
 		bool Window::closed() const
 		{
-			return glfwWindowShouldClose(m_Window);
-		}
-		
-		void Window::update() const
-		{
-			glfwSwapBuffers(m_Window);
-			glfwPollEvents();
+			return glfwWindowShouldClose(m_Window) == 1;
 		}
 
 	}
