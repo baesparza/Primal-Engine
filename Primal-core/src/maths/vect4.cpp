@@ -13,9 +13,7 @@ namespace primal
 		{ }
 
 		vect4::vect4(vect4 & v) : x(v.x), y(v.y), z(v.z), w(v.w)
-		{ 
-			//	std::cout << "Copy" << '\n';
-		}
+		{ }
 
 		vect4 & vect4::add(const vect4 & other)
 		{
@@ -53,22 +51,22 @@ namespace primal
 			return (*this);
 		}
 
-		vect4 & operator+(vect4 & a, const vect4 & b)
+		vect4 operator+(vect4 a, const vect4 & b)
 		{
 			return a.add(b);
 		}
 
-		vect4 & operator-(vect4 & a, const vect4 & b)
+		vect4 operator-(vect4 a, const vect4 & b)
 		{
 			return a.substract(b);
 		}
 
-		vect4 & operator*(vect4 & a, const vect4 & b)
+		vect4 operator*(vect4 a, const vect4 & b)
 		{
 			return a.multiply(b);
 		}
 
-		vect4 & operator/(vect4 & a, const vect4 & b)
+		vect4 operator/(vect4 a, const vect4 & b)
 		{
 			return a.divide(b);
 		}

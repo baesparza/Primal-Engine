@@ -1,7 +1,5 @@
 #include "graphics\Window.h"
-#include "maths\vect2.h"
-#include "maths\vect3.h"
-#include "maths\vect4.h"
+#include "maths\maths.h"
 
 int main()
 {
@@ -11,17 +9,8 @@ int main()
 
 	Window window("Primal Engine", 960, 540);
 
-	vect4 a(1.0f, 2.0f, 3.0f, 4.0f);
-	vect4 b(3.0f, 4.0f, 3.0f, 4.0f);
-
-	vect4 c = a + b;
-
 	while (!window.closed())
 	{
-		std::cout << a << '\n';
-		std::cout << b << '\n';
-		std::cout << c << '\n';
-
 		window.clear();
 
 		glBegin(GL_POLYGON);

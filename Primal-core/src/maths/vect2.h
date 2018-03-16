@@ -20,12 +20,10 @@ namespace primal
 			vect2& multiply(const vect2& other);
 			vect2& divide(const vect2& other);
 
-			// if (&a) cause problems when affecting a, remove (&a) reference
-			// or mark (&a) as a const
-			friend vect2& operator+ (vect2 &a, const vect2 &b);
-			friend vect2& operator- (vect2 &a, const vect2 &b);
-			friend vect2& operator* (vect2 &a, const vect2 &b);
-			friend vect2& operator/ (vect2 &a, const vect2 &b);
+			friend vect2 operator+ (vect2 a, const vect2 &b);
+			friend vect2 operator- (vect2 a, const vect2 &b);
+			friend vect2 operator* (vect2 a, const vect2 &b);
+			friend vect2 operator/ (vect2 a, const vect2 &b);
 
 			friend void operator+= (vect2 &a, const vect2 &b);
 			friend void operator-= (vect2 &a, const vect2 &b);
