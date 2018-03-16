@@ -1,5 +1,7 @@
 #include "graphics\Window.h"
+#include "maths\vect2.h"
 #include "maths\vect3.h"
+#include "maths\vect4.h"
 
 int main()
 {
@@ -9,13 +11,16 @@ int main()
 
 	Window window("Primal Engine", 960, 540);
 
-	vect3 a(1.0f, 2.0f, 3.0f);
-	vect3 b(3.0f, 4.0f, 5.0f);
+	vect4 a(1.0f, 2.0f, 3.0f, 4.0f);
+	vect4 b(3.0f, 4.0f, 3.0f, 4.0f);
+
+	vect4 c = a + b;
 
 	while (!window.closed())
 	{
-		a.add(b).add(a);
 		std::cout << a << '\n';
+		std::cout << b << '\n';
+		std::cout << c << '\n';
 
 		window.clear();
 
