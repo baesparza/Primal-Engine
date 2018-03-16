@@ -9,7 +9,11 @@ namespace primal
 
 		struct mat4
 		{
-			float elements[4 * 4];
+			union
+			{
+				float elements[4 * 4];
+				vect4 columns[4];
+			};
 
 			mat4();
 			mat4(float diagonal);
@@ -24,7 +28,7 @@ namespace primal
 
 			static mat4 ortographic(float left, float right, float bottom, float top, float near, float far);
 			static mat4 perspective(float fov, float aspectRatio, float near, float far);
-			
+
 			static mat4 translation(const vect3& translation);
 			static mat4 rotation(float angle, const vect3& axis);
 			static mat4 scale(const vect3& scale);

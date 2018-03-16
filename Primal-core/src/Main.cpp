@@ -13,6 +13,8 @@ int main()
 
 	position *= mat4::identity();
 
+	std::cout << position.columns[3] << '\n';
+
 	while (!window.closed())
 	{
 		window.clear();
