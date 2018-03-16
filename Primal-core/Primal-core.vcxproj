@@ -134,11 +134,13 @@
   <ItemGroup>
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\graphics\Window.cpp" />
-    <ClCompile Include="src\maths\vec2.cpp" />
+    <ClCompile Include="src\maths\vect2.cpp" />
+    <ClCompile Include="src\maths\vect3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\Window.h" />
-    <ClInclude Include="src\maths\vec2.h" />
+    <ClInclude Include="src\maths\vect2.h" />
+    <ClInclude Include="src\maths\vect3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

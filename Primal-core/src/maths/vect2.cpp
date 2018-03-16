@@ -1,4 +1,4 @@
-#include "vec2.h"
+#include "vect2.h"
 
 namespace primal
 {
