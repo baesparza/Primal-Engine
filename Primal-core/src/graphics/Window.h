@@ -7,8 +7,8 @@
 namespace primal {
 	namespace graphics {
 
-		#define MAX_KEYS 1024
-		#define MAX_BUTTONS 12
+		#define MAX_KEYS GLFW_KEY_LAST
+		#define MAX_BUTTONS GLFW_MOUSE_BUTTON_LAST
 
 		class Window
 		{
@@ -39,7 +39,8 @@ namespace primal {
 			friend static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 			friend static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 		};
-
+		// TODO: refactor this fuctions
+		// TODO: move input to other class
 		void key_callback(GLFWwindow * window, int key, int scancode, int action, int mods);
 		void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 		void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);

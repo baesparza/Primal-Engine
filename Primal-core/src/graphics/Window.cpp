@@ -1,7 +1,9 @@
 #include "Window.h"
 
-namespace primal {
-	namespace graphics {
+namespace primal
+{
+	namespace graphics
+	{
 
 		Window::Window(const char * title, int width, int heigth) :
 			m_Title(title), m_Width(width), m_Heigth(heigth)
