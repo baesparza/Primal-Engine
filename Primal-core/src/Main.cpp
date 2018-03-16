@@ -7,24 +7,28 @@ int main()
 	Window window("Primal Engine", 960, 540);
 	glClearColor(0.2f, 0.5f, 0.7f, 1.f);
 
-	GLuint vao;
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
+	//	GLuint vao;
+	//	glGenVertexArrays(1, &vao);
+	//	glBindVertexArray(vao);
 
-	 
+
 	while (!window.closed())
 	{
-		//	std::cout << window.getWidth() << ", " << window.getHeigth() << '\n';
+		double x, y;
+		window.getMousePosition(x, y);
+		std::cout << x << ", " << y << '\n';
 		window.clear();
 
-		//	glBegin(GL_QUADS);
-		//	glVertex2f(-0.5f, -0.5f);
-		//	glVertex2f( 0.5f, -0.5f);
-		//	glVertex2f( 0.5f,  0.5f);
-		//	glVertex2f(-0.5f,  0.5f);
-		//	glEnd();
+		glBegin(GL_POLYGON);
 
-		glDrawArrays(GL_ARRAY_BUFFER, 0, 6);
+		glColor3f(1.0, 0.0, 0.0);     glVertex3f(0.5, -0.5, -0.5);      // P1 is red
+		glColor3f(0.0, 1.0, 0.0);     glVertex3f(0.5, 0.5, -0.5);      // P2 is green
+		glColor3f(0.0, 0.0, 1.0);     glVertex3f(-0.5, 0.5, -0.5);      // P3 is blue
+		glColor3f(1.0, 0.0, 1.0);     glVertex3f(-0.5, -0.5, -0.5);      // P4 is purple
+
+		glEnd();
+
+		//	glDrawArrays(GL_ARRAY_BUFFER, 0, 6);
 
 		window.update();
 	}
