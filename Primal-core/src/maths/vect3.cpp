@@ -5,13 +5,7 @@ namespace primal
 	namespace maths
 	{
 
-		vect3::vect3() : x(0), y(0), z(0)
-		{ }
-
 		vect3::vect3(const float & ax, const float & ay, const float & az) : x(ax), y(ay), z(az)
-		{ }
-
-		vect3::vect3(vect3 & v) : x(v.x), y(v.y), z(v.z)
 		{ }
 
 		vect3 & vect3::add(const vect3 & other)

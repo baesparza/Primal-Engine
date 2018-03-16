@@ -11,9 +11,8 @@ namespace primal
 		{
 			float x, y, z;
 
-			vect3();
+			vect3() = default;
 			vect3(const float& ax, const float& ay, const float& az);
-			vect3(vect3& v);
 
 			vect3& add(const vect3& other);
 			vect3& substract(const vect3& other);

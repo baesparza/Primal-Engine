@@ -5,13 +5,7 @@ namespace primal
 	namespace maths
 	{
 
-		vect2::vect2() : x(0), y(0)
-		{ }
-
 		vect2::vect2(const float & ax, const float & ay) : x(ax), y(ay)
-		{ }
-
-		vect2::vect2(vect2 & v) : x(v.x), y(v.y)
 		{ }
 
 		vect2 & vect2::add(const vect2 & other)

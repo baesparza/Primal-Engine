@@ -5,14 +5,8 @@ namespace primal
 	namespace maths
 	{
 
-		vect4::vect4() : x(0), y(0), z(0), w(0)
-		{ }
-
 		vect4::vect4(const float & ax, const float & ay, const float & az, const float & aw) : 
 			x(ax), y(ay), z(az), w(aw)
-		{ }
-
-		vect4::vect4(vect4 & v) : x(v.x), y(v.y), z(v.z), w(v.w)
 		{ }
 
 		vect4 & vect4::add(const vect4 & other)
