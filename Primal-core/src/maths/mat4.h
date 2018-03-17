@@ -17,7 +17,6 @@ namespace primal
 
 			mat4();
 			mat4(float diagonal);
-			// TODO: copy constructor
 
 			static mat4 identity();
 
