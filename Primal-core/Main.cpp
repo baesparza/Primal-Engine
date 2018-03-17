@@ -7,6 +7,7 @@ int main()
 {
 	// TODO: separate input class
 	// TODO: gl handle errors
+	// TODO: fix mat4::rotation
 	using namespace primal;
 	using namespace graphics;
 	using namespace maths;
@@ -15,13 +16,13 @@ int main()
 
 	GLfloat vertices[] =
 	{
-		-0.5f, -0.5f,  0.0f, // 0
-		 0.5f, -0.5f,  0.0f, // 1
-		 0.5f,  0.5f,  0.0f, // 2
+		4,3,0,
+		12,3,0,
+		4,6,0,
 
-		 0.5f,  0.5f,  0.0f, // 2
-		-0.5f, -0.5f,  0.0f, // 0
-		-0.5f,  0.5f,  0.0f // 3
+		12, 6, 0,
+		4,6,0,
+		12,3,0,
 	};
 
 	GLuint vbo;
@@ -31,8 +32,14 @@ int main()
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
 
+	mat4 ortho = mat4::ortographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
+
 	Shader shader("./res/shader/basic.ver", "./res/shader/basic.frag");
 	shader.enable();
+
+	shader.setUniformMat4("pr_matrix", ortho);
+	//	shader.setUniformMat4("ml_matrix", mat4::rotation(5, vect3(0, 0, 1)));
+	shader.setUniformMat4("ml_matrix", mat4::translation(vect3(2, 2, 0)));
 
 	while (!window.closed())
 	{
