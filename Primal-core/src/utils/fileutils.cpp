@@ -15,16 +15,18 @@ namespace primal
 
 	std::string read_file(const char* filePath)
 	{
-		std::fstream stream(filePath);
+		FILE* file = fopen(filePath, "rt");
+		fseek(file, 0, SEEK_END);
+		unsigned long length = ftell(file);
+		char* data = new char[length + 1];
+		memset(data, 0, length + 1);
+		fseek(file, 0, SEEK_SET);
+		fread(data, 1, length, file);
+		fclose(file);
 
-		std::string line;
-		std::stringstream ss;
-
-		while (getline(stream, line))
-		{
-				ss << line << '\n';
-		}
-		return ss.str();
+		std::string result(data);
+		delete[] data;
+		return result;
 	}
 
 }
