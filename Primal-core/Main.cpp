@@ -8,6 +8,7 @@ int main()
 	// TODO: separate input class
 	// TODO: gl handle errors
 	// TODO: fix mat4::rotation
+	// TODO: rename vect classes to vec
 	using namespace primal;
 	using namespace graphics;
 	using namespace maths;
@@ -40,6 +41,9 @@ int main()
 	shader.setUniformMat4("pr_matrix", ortho);
 	//	shader.setUniformMat4("ml_matrix", mat4::rotation(5, vect3(0, 0, 1)));
 	shader.setUniformMat4("ml_matrix", mat4::translation(vect3(2, 2, 0)));
+
+	shader.setUniform2f("light_pos", vect2(8.0f, 4.5f));
+	shader.setUniform4f("colour", vect4(0.6f, 0.5f, 0.7f, 1.0f));
 
 	while (!window.closed())
 	{
