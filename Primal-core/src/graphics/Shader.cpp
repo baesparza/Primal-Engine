@@ -27,17 +27,17 @@ namespace primal
 			glUniform1i(getUniformLocation(name), value);
 		}
 
-		void Shader::setUniform2f(const GLchar * name, const maths::vect2 & vector)
+		void Shader::setUniform2f(const GLchar * name, const maths::vec2 & vector)
 		{
 			glUniform2f(getUniformLocation(name), vector.x, vector.y);
 		}
 
-		void Shader::setUniform3f(const GLchar * name, const maths::vect3 & vector)
+		void Shader::setUniform3f(const GLchar * name, const maths::vec3 & vector)
 		{
 			glUniform3f(getUniformLocation(name), vector.x, vector.y, vector.z);
 		}
 
-		void Shader::setUniform4f(const GLchar * name, const maths::vect4 & vector)
+		void Shader::setUniform4f(const GLchar * name, const maths::vec4 & vector)
 		{
 			glUniform4f(getUniformLocation(name), vector.x, vector.y, vector.z, vector.w);
 		}

@@ -82,7 +82,7 @@ namespace primal
 			return result;
 		}
 
-		mat4 mat4::translation(const vect3 & translation)
+		mat4 mat4::translation(const vec3 & translation)
 		{
 			mat4 result(1.f);
 
@@ -93,7 +93,7 @@ namespace primal
 			return result;
 		}
 
-		mat4 mat4::rotation(float angle, const vect3 & axis)
+		mat4 mat4::rotation(float angle, const vec3 & axis)
 		{
 			mat4 result(1.f);
 
@@ -121,7 +121,7 @@ namespace primal
 			return result;
 		}
 
-		mat4 mat4::scale(const vect3 & scale)
+		mat4 mat4::scale(const vec3 & scale)
 		{
 			mat4 result(1.f);
 

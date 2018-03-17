@@ -11,7 +11,6 @@ int main()
 {
 	// TODO: separate input class
 	// TODO: gl handle errors on debug
-	// TODO: rename vect classes to vec
 
 	using namespace primal;
 	using namespace graphics;
@@ -72,19 +71,19 @@ int main()
 		// mouse position
 		double x, y;
 		window.getMousePosition(x, y);
-		shader.setUniform2f("light_pos", vect2(( float ) (x * 16 / 960), ( float ) (9 - y * 9 / 540)));
+		shader.setUniform2f("light_pos", vec2(( float ) (x * 16 / 960), ( float ) (9 - y * 9 / 540)));
 
 		/////draw/////
 		sprite1.bind();
 		ibo.bind();
-		shader.setUniformMat4("ml_matrix", mat4::translation(vect3(4, 3, 0)));
+		shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
 		glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
 		sprite1.unbind();
 		ibo.unbind();
 
 		sprite2.bind();
 		ibo.bind();
-		shader.setUniformMat4("ml_matrix", mat4::translation(vect3(0, 0, 0)));
+		shader.setUniformMat4("ml_matrix", mat4::translation(vec3(0, 0, 0)));
 		glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
 		sprite2.unbind();
 		ibo.unbind();
