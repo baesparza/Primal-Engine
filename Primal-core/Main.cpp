@@ -1,11 +1,15 @@
-#include "graphics\Window.h"
-#include "maths\maths.h"
+#include "src\graphics\Window.h"
+#include "src\maths\maths.h"
+#include "src\utils\fileutils.h"
 
 int main()
 {
 	using namespace primal;
 	using namespace graphics;
 	using namespace maths;
+
+	std::string file = read_file("main.cpp");
+	std::cout << file << '\n';
 
 	Window window("Primal Engine", 960, 540);
 
@@ -29,6 +33,5 @@ int main()
 
 		window.update();
 	}
-	//	system("PAUSE");
 	return 0;
 }
