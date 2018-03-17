@@ -1,16 +1,11 @@
-#include "src\graphics\Window.h"
-#include "src\graphics\Shader.h"
+#include "src\graphics\graphics.h"
 #include "src\maths\maths.h"
 #include "src\utils\fileutils.h"
 
-#include "src\graphics\buffers\Buffer.h"
-#include "src\graphics\buffers\IndexBuffer.h"
-#include "src\graphics\buffers\VertexArray.h"
 
 int main()
 {
 	// TODO: separate input class
-	// TODO: gl handle errors on debug
 
 	using namespace primal;
 	using namespace graphics;

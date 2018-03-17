@@ -147,6 +147,8 @@
     <ClInclude Include="src\graphics\buffers\IndexBuffer.h" />
     <ClInclude Include="src\graphics\buffers\Buffer.h" />
     <ClInclude Include="src\graphics\buffers\VertexArray.h" />
+    <ClInclude Include="src\graphics\graphics.h" />
+    <ClInclude Include="src\utils\LogError.h" />
     <ClInclude Include="src\graphics\Shader.h" />
     <ClInclude Include="src\utils\fileutils.h" />
     <ClInclude Include="src\maths\mat4.h" />
