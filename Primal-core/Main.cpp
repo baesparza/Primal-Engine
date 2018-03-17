@@ -10,7 +10,7 @@
 int main()
 {
 	// TODO: separate input class
-	// TODO: gl handle errors
+	// TODO: gl handle errors on debug
 	// TODO: rename vect classes to vec
 
 	using namespace primal;

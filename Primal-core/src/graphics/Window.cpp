@@ -86,6 +86,10 @@ namespace primal
 
 		void Window::update()
 		{
+			GLenum error = glGetError();
+			if (error != GL_NO_ERROR)
+				std::cout << "[ERROR OPENGL]: " << error << '\n';
+
 			glfwPollEvents();
 			/// enable changes on window class variables
 			//	glfwGetFramebufferSize(m_Window, &m_Width, &m_Heigth);
