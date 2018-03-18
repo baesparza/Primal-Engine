@@ -1,7 +1,7 @@
 #include "src\graphics\graphics.h"
 #include "src\maths\maths.h"
 #include "src\utils\fileutils.h"
-
+#include "src\input\Mouse.h"
 
 int main()
 {
@@ -64,9 +64,10 @@ int main()
 	{
 		window.clear();
 		// mouse position
-		double x, y;
-		window.getMousePosition(x, y);
-		shader.setUniform2f("light_pos", vec2(( float ) (x * 16 / 960), ( float ) (9 - y * 9 / 540)));
+		//	double x, y;
+		//	window.getMousePosition(x, y);
+		vec2 pos = mouse::getPosition(window);
+		shader.setUniform2f("light_pos", vec2(( float ) (pos.x * 16 / 960), ( float ) (9 - pos.y * 9 / 540)));
 
 		/////draw/////
 		sprite1.bind();

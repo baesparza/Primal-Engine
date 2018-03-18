@@ -3,6 +3,7 @@
 #include <iostream>
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
+#include "../maths/vec2.h"
 
 namespace primal {
 	namespace graphics {
@@ -12,14 +13,14 @@ namespace primal {
 
 		class Window
 		{
-		private:
+		public:
 			const char *m_Title;
 			int m_Width, m_Heigth;
 			GLFWwindow *m_Window;
-
+		public:
 			bool m_Keys[MAX_KEYS];
 			bool m_MouseButtons[MAX_BUTTONS];
-			double mx, my;
+			maths::vec2 m_position;
 		public:
 			Window(const char *title, int width, int heigth);
 			~Window();
@@ -32,17 +33,15 @@ namespace primal {
 
 			bool isKeyPressed(unsigned int keycode) const;
 			bool isMouseButtonPressed(unsigned int button) const;
-			void getMousePosition(double &x, double &y) const;
 		private:
 			bool init();
 			friend static void key_callback(GLFWwindow * window, int key, int scancode, int action, int mods);
 			friend static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
-			friend static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 		};
 		// TODO: refactor this fuctions
 		// TODO: move input to other class
+
 		void key_callback(GLFWwindow * window, int key, int scancode, int action, int mods);
 		void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
-		void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 	}
 }

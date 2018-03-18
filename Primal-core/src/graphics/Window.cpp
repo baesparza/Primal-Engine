@@ -45,7 +45,6 @@ namespace primal
 			glfwSetWindowSizeCallback(m_Window, [](GLFWwindow *wind, int w, int h) { glViewport(0, 0, w, h); });
 			glfwSetKeyCallback(m_Window, key_callback);
 			glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
-			glfwSetCursorPosCallback(m_Window, cursor_position_callback);
 
 			if (glewInit() != GLEW_OK)
 			{
@@ -71,12 +70,6 @@ namespace primal
 			if (button >= MAX_BUTTONS)
 				return false;
 			return m_MouseButtons[button];
-		}
-
-		void Window::getMousePosition(double &x, double &y) const
-		{
-			x = mx;
-			y = my;
 		}
 
 		void Window::clear() const
@@ -111,13 +104,6 @@ namespace primal
 		{
 			Window* win = ( Window* ) glfwGetWindowUserPointer(window);
 			win->m_MouseButtons[button] = action != GLFW_RELEASE;
-		}
-
-		void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
-		{
-			Window* win = ( Window* ) glfwGetWindowUserPointer(window);
-			win->mx = xpos;
-			win->my = ypos;
 		}
 	}
 }
