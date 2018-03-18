@@ -63,9 +63,7 @@ int main()
 
 	while (!window.closed())
 	{
-		// mouse button
-		if (Keyboard::isKeyPressed(window, GLFW_KEY_E))
-			std::cout << "Pressed" << '\n';
+			std::cout << window.m_Heigth << '\n';
 
 		window.clear();
 		// mouse position

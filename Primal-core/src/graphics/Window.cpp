@@ -66,8 +66,7 @@ namespace primal
 				std::cout << "[ERROR OPENGL]: " << error << '\n';
 
 			glfwPollEvents();
-			/// enable changes on window class variables
-			//	glfwGetFramebufferSize(m_Window, &m_Width, &m_Heigth);
+			glfwGetFramebufferSize(m_Window, &m_Width, &m_Heigth);
 			glfwSwapBuffers(m_Window);
 		}
 
