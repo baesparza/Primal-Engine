@@ -11,10 +11,10 @@ namespace primal
 			if (!init())
 				glfwTerminate();
 
-			for (int i = 0; i < MAX_KEYS; i++)
+			for (int i = 0; i < GLFW_KEY_LAST; i++)
 				m_Keys[i] = false;
 
-			for (int i = 0; i < MAX_BUTTONS; i++)
+			for (int i = 0; i < GLFW_MOUSE_BUTTON_LAST; i++)
 				m_MouseButtons[i] = false;
 		}
 
@@ -43,8 +43,8 @@ namespace primal
 			glfwSetWindowUserPointer(m_Window, this);
 
 			glfwSetWindowSizeCallback(m_Window, [](GLFWwindow *wind, int w, int h) { glViewport(0, 0, w, h); });
+			
 			glfwSetKeyCallback(m_Window, key_callback);
-			glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
 
 			if (glewInit() != GLEW_OK)
 			{
@@ -59,17 +59,9 @@ namespace primal
 		bool Window::isKeyPressed(unsigned int keycode) const
 		{
 			// TODO: log this
-			if (keycode >= MAX_KEYS)
+			if (keycode >= GLFW_KEY_LAST)
 				return false;
 			return m_Keys[keycode];
-		}
-
-		bool Window::isMouseButtonPressed(unsigned int button) const
-		{
-			// TODO: log this
-			if (button >= MAX_BUTTONS)
-				return false;
-			return m_MouseButtons[button];
 		}
 
 		void Window::clear() const
@@ -100,10 +92,5 @@ namespace primal
 			win->m_Keys[key] = action != GLFW_RELEASE;
 		}
 
-		void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
-		{
-			Window* win = ( Window* ) glfwGetWindowUserPointer(window);
-			win->m_MouseButtons[button] = action != GLFW_RELEASE;
-		}
 	}
 }

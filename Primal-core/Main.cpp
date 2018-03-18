@@ -62,10 +62,12 @@ int main()
 
 	while (!window.closed())
 	{
+		// mouse button
+		if (mouse::isButtonPressed(window, GLFW_MOUSE_BUTTON_LEFT))
+			std::cout << "Pressed" << '\n';
+
 		window.clear();
 		// mouse position
-		//	double x, y;
-		//	window.getMousePosition(x, y);
 		vec2 pos = mouse::getPosition(window);
 		shader.setUniform2f("light_pos", vec2(( float ) (pos.x * 16 / 960), ( float ) (9 - pos.y * 9 / 540)));
 
