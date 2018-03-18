@@ -10,7 +10,7 @@ namespace primal {
 
 		class Window
 		{
-		public:
+		private:
 			const char *m_Title;
 			int m_Width, m_Heigth;
 			GLFWwindow *m_Window;
@@ -27,6 +27,7 @@ namespace primal {
 
 			inline int getHeigth() const { return m_Heigth; }
 			inline int getWidth() const { return m_Width; }
+			inline GLFWwindow * getWindow() const { return m_Window; };
 		private:
 			bool init();
 		};

@@ -4,7 +4,7 @@ namespace primal
 {
 	maths::vec2 Mouse::getPosition(const graphics::Window & win)
 	{
-		glfwSetCursorPosCallback(win.m_Window, [](GLFWwindow* window, double xpos, double ypos)
+		glfwSetCursorPosCallback(win.getWindow(), [](GLFWwindow* window, double xpos, double ypos)
 		{
 			graphics::Window* win = (graphics::Window*) glfwGetWindowUserPointer(window);
 			win->m_position.x = ( float ) xpos;
@@ -15,7 +15,7 @@ namespace primal
 
 	bool Mouse::isButtonPressed(const graphics::Window & win, unsigned int button)
 	{
-		glfwSetMouseButtonCallback(win.m_Window, [](GLFWwindow* window, int button, int action, int mods)
+		glfwSetMouseButtonCallback(win.getWindow(), [](GLFWwindow* window, int button, int action, int mods)
 		{
 			graphics::Window* win = (graphics::Window*) glfwGetWindowUserPointer(window);
 			win->m_MouseButtons[button] = action != GLFW_RELEASE;

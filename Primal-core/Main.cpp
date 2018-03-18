@@ -63,8 +63,6 @@ int main()
 
 	while (!window.closed())
 	{
-			std::cout << window.m_Heigth << '\n';
-
 		window.clear();
 		// mouse position
 		vec2 pos = Mouse::getPosition(window);
