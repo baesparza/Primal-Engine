@@ -136,6 +136,7 @@
     <ClCompile Include="src\graphics\buffers\Buffer.cpp" />
     <ClCompile Include="src\graphics\buffers\VertexArray.cpp" />
     <ClCompile Include="src\graphics\Shader.cpp" />
+    <ClCompile Include="src\graphics\Simple2DRenderer.cpp" />
     <ClCompile Include="src\input\Keyboard.cpp" />
     <ClCompile Include="src\input\Mouse.cpp" />
     <ClCompile Include="src\maths\mat4.cpp" />
@@ -150,6 +151,9 @@
     <ClInclude Include="src\graphics\buffers\Buffer.h" />
     <ClInclude Include="src\graphics\buffers\VertexArray.h" />
     <ClInclude Include="src\graphics\graphics.h" />
+    <ClInclude Include="src\graphics\Renderable2D.h" />
+    <ClInclude Include="src\graphics\Renderer2D.h" />
+    <ClInclude Include="src\graphics\Simple2DRenderer.h" />
     <ClInclude Include="src\input\Keyboard.h" />
     <ClInclude Include="src\input\Mouse.h" />
     <ClInclude Include="src\utils\LogError.h" />
