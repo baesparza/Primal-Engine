@@ -27,15 +27,9 @@ namespace primal {
 
 			inline int getHeigth() const { return m_Heigth; }
 			inline int getWidth() const { return m_Width; }
-
-			bool isKeyPressed(unsigned int keycode) const;
 		private:
 			bool init();
-			friend static void key_callback(GLFWwindow * window, int key, int scancode, int action, int mods);
 		};
-		// TODO: refactor this fuctions
-		// TODO: move input to other class
 
-		void key_callback(GLFWwindow * window, int key, int scancode, int action, int mods);
 	}
 }

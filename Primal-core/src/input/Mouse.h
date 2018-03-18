@@ -5,11 +5,9 @@
 
 namespace primal
 {
-	namespace mouse
+	struct Mouse
 	{
-		// TODO: create class for mouse and 
-		maths::vec2 getPosition(const graphics::Window& win);
-
-		bool isButtonPressed(const graphics::Window& win, unsigned int button);
-	}
+		static maths::vec2 getPosition(const graphics::Window& win);
+		static bool isButtonPressed(const graphics::Window& win, unsigned int button);
+	};
 }

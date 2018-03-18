@@ -136,6 +136,7 @@
     <ClCompile Include="src\graphics\buffers\Buffer.cpp" />
     <ClCompile Include="src\graphics\buffers\VertexArray.cpp" />
     <ClCompile Include="src\graphics\Shader.cpp" />
+    <ClCompile Include="src\input\Keyboard.cpp" />
     <ClCompile Include="src\input\Mouse.cpp" />
     <ClCompile Include="src\maths\mat4.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="src\graphics\buffers\Buffer.h" />
     <ClInclude Include="src\graphics\buffers\VertexArray.h" />
     <ClInclude Include="src\graphics\graphics.h" />
+    <ClInclude Include="src\input\Keyboard.h" />
     <ClInclude Include="src\input\Mouse.h" />
     <ClInclude Include="src\utils\LogError.h" />
     <ClInclude Include="src\graphics\Shader.h" />

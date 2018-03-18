@@ -2,6 +2,7 @@
 #include "src\maths\maths.h"
 #include "src\utils\fileutils.h"
 #include "src\input\Mouse.h"
+#include "src\input\Keyboard.h"
 
 int main()
 {
@@ -63,12 +64,12 @@ int main()
 	while (!window.closed())
 	{
 		// mouse button
-		if (mouse::isButtonPressed(window, GLFW_MOUSE_BUTTON_LEFT))
+		if (Keyboard::isKeyPressed(window, GLFW_KEY_E))
 			std::cout << "Pressed" << '\n';
 
 		window.clear();
 		// mouse position
-		vec2 pos = mouse::getPosition(window);
+		vec2 pos = Mouse::getPosition(window);
 		shader.setUniform2f("light_pos", vec2(( float ) (pos.x * 16 / 960), ( float ) (9 - pos.y * 9 / 540)));
 
 		/////draw/////

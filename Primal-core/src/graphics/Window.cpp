@@ -44,8 +44,6 @@ namespace primal
 
 			glfwSetWindowSizeCallback(m_Window, [](GLFWwindow *wind, int w, int h) { glViewport(0, 0, w, h); });
 			
-			glfwSetKeyCallback(m_Window, key_callback);
-
 			if (glewInit() != GLEW_OK)
 			{
 				std::cout << "Fail to create glew lib" << '\n';
@@ -54,14 +52,6 @@ namespace primal
 
 			std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << '\n';
 			return true;
-		}
-
-		bool Window::isKeyPressed(unsigned int keycode) const
-		{
-			// TODO: log this
-			if (keycode >= GLFW_KEY_LAST)
-				return false;
-			return m_Keys[keycode];
 		}
 
 		void Window::clear() const
@@ -84,12 +74,6 @@ namespace primal
 		bool Window::closed() const
 		{
 			return glfwWindowShouldClose(m_Window) == 1;
-		}
-
-		void key_callback(GLFWwindow * window, int key, int scancode, int action, int mods)
-		{
-			Window* win = ( Window* ) glfwGetWindowUserPointer(window);
-			win->m_Keys[key] = action != GLFW_RELEASE;
 		}
 
 	}
