@@ -2,9 +2,10 @@
 
 #include "src\graphics\graphics.h"
 #include "src\maths\maths.h"
-#include "src\utils\fileutils.h"
 #include "src\input\Mouse.h"
 #include "src\input\Keyboard.h"
+#include "src\utils\fileutils.h"
+#include "src\utils\Timer.h"
 
 int main()
 {
@@ -34,6 +35,9 @@ int main()
 		}
 
 
+	Timer time;
+	float timer = 0;
+	unsigned int frames = 0;
 	while (!window.closed())
 	{
 		window.clear();
@@ -52,6 +56,16 @@ int main()
 		renderer.flush();
 
 		window.update();
+		
+
+		/////frame rate///
+		frames++;
+		if (time.elapsed() - timer > 1.f)
+		{
+			timer += 1;
+			printf("%d fps\n", frames);
+			frames = 0;
+		}
 	}
 	return 0;
 }

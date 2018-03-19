@@ -171,6 +171,7 @@
     <ClInclude Include="src\maths\vec2.h" />
     <ClInclude Include="src\maths\vec3.h" />
     <ClInclude Include="src\maths\vec4.h" />
+    <ClInclude Include="src\utils\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shader\basic.frag" />
