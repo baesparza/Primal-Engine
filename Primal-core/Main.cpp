@@ -40,6 +40,11 @@ int main()
 	unsigned int frames = 0;
 	while (!window.closed())
 	{
+		mat4 mat = mat4::translation(vec3(5, 5, 5));
+		mat = mat * mat4::rotation(time.elapsed() * 50.0, vec3(0, 0, 1));
+		mat = mat * mat4::translation(vec3(-5, -5, -5));
+		shader.setUniformMat4("ml_matrix", mat);
+
 		window.clear();
 		// mouse position
 		vec2 pos = Mouse::getPosition(window);
