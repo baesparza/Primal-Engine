@@ -39,7 +39,7 @@ namespace primal
 				return false;
 			}
 			glfwMakeContextCurrent(m_Window);
-			//	glfwSwapInterval(1);
+			glfwSwapInterval(1);
 			glfwSetWindowUserPointer(m_Window, this);
 
 			glfwSetWindowSizeCallback(m_Window, [](GLFWwindow *wind, int w, int h) { glViewport(0, 0, w, h); });

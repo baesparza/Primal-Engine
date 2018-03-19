@@ -1,13 +1,15 @@
+#include <time.h>
+
 #include "src\graphics\graphics.h"
 #include "src\maths\maths.h"
 #include "src\utils\fileutils.h"
 #include "src\input\Mouse.h"
 #include "src\input\Keyboard.h"
 
-#define BATCH_RENDERER 1
-
 int main()
 {
+	srand(time(0));
+
 	using namespace primal;
 	using namespace graphics;
 	using namespace maths;
@@ -22,15 +24,15 @@ int main()
 
 	shader.setUniformMat4("pr_matrix", ortho);
 
-	#if BATCH_RENDERER
-	Sprite sprite1(4, 4, 3, 3, maths::vec4{0.5f, 0.1f, 0.4f, 1});
-	Sprite sprite2(8, 3, 1, 3, 1.f);
+	std::vector<Renderable2D*> sprites;
+
 	BatchRenderer2D renderer;
-	#else
-	StaticSprite sprite1(4, 4, 3, 3, maths::vec4{0.5f, 0.1f, 0.4f, 1}, shader);
-	StaticSprite sprite2(8, 3, 1, 3, 1.f, shader);
-	Simple2DRenderer renderer;
-	#endif
+	for (float y = 0; y < 9; y += 0.05)
+		for (float x = 0; x < 16; x += 0.05)
+		{
+			sprites.push_back(new Sprite(x, y, 0.04f, 0.04f, maths::vec4(rand() % 1000 / 1000.f, rand() % 1000 / 1000.f, rand() % 1000 / 1000.f, 1.f)));
+		}
+
 
 	while (!window.closed())
 	{
@@ -40,14 +42,12 @@ int main()
 		shader.setUniform2f("light_pos", vec2(( float ) (pos.x * 16 / window.getWidth()), ( float ) (9 - pos.y * 9 / window.getHeigth())));
 
 		/////draw/////
-		#if BATCH_RENDERER
 		renderer.begin();
-		#endif
-		renderer.submit(&sprite1);
-		renderer.submit(&sprite2);
-		#if BATCH_RENDERER
+		for (int i = 0; i < sprites.size(); i++)
+		{
+			renderer.submit(sprites[i]);
+		}
 		renderer.end();
-		#endif
 
 		renderer.flush();
 

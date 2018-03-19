@@ -19,6 +19,7 @@ namespace primal
 			maths::vec4 color;
 		};
 
+		// basic class for sprites
 		class Renderable2D
 		{
 		protected:
