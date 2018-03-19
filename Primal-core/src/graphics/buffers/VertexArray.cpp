@@ -14,6 +14,8 @@ namespace primal
 		{
 			for (int i = 0; i < m_Buffer.size(); i++)
 				delete m_Buffer[i];
+
+			glDeleteVertexArrays(1, &m_ArrayID);
 		}
 
 		void VertexArray::addBuffer(Buffer * buffer, GLuint index)

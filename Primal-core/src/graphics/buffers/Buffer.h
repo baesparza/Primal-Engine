@@ -14,6 +14,7 @@ namespace primal
 			GLuint m_ComponentsCount; // count atributes
 		public:
 			Buffer(GLfloat * data, GLsizei count, GLuint componentCount);
+			~Buffer();
 
 			void bind() const;
 			void unbind() const;

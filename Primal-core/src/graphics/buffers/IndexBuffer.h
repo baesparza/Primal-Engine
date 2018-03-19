@@ -13,7 +13,7 @@ namespace primal
 			GLuint m_Count; // num indices
 		public:
 			IndexBuffer(GLushort * data, GLsizei count);
-
+			~IndexBuffer();
 			void bind() const;
 			void unbind() const;
 
