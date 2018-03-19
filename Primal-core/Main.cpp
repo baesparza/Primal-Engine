@@ -20,8 +20,8 @@ int main()
 
 	shader.setUniformMat4("pr_matrix", ortho);
 
-	Renderable2D sprite1(maths::vec3(4, 4, 0), maths::vec2(3, 3), maths::vec4(0.5f, 0.3f, 0.f, 1.f), shader);
-	Renderable2D sprite2(maths::vec3(8, 3, 0), maths::vec2(1, 3), maths::vec4(0.5f, 0.3f, 0.7f, 1.f), shader);
+	StaticSprite sprite1(4, 4, 3, 3, maths::vec4{0.5f, 0.1f, 0.4f, 1}, shader);
+	StaticSprite sprite2(8, 3, 1, 3, 1.f, shader);
 	Simple2DRenderer renderer;
 
 	while (!window.closed())
@@ -29,7 +29,7 @@ int main()
 		window.clear();
 		// mouse position
 		vec2 pos = Mouse::getPosition(window);
-		shader.setUniform2f("light_pos", vec2(( float ) (pos.x * 16 / 960), ( float ) (9 - pos.y * 9 / 540)));
+		shader.setUniform2f("light_pos", vec2(( float ) (pos.x * 16 / window.getWidth()), ( float ) (9 - pos.y * 9 / window.getHeigth())));
 
 		/////draw/////
 		renderer.submit(&sprite1);

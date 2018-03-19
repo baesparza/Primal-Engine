@@ -9,6 +9,10 @@ namespace primal
 			x(ax), y(ay), z(az), w(aw)
 		{ }
 
+		vec4::vec4(const float & n) :
+			x(n), y(n), z(n), w(n)
+		{ }
+
 		vec4 & vec4::add(const vec4 & other)
 		{
 			x += other.x;

@@ -13,6 +13,8 @@ namespace primal
 
 			vec4() = default;
 			vec4(const float& ax, const float& ay, const float& az, const float& aw);
+			vec4(const float & n);
+
 
 			vec4& add(const vec4& other);
 			vec4& substract(const vec4& other);

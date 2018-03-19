@@ -7,3 +7,4 @@
 #include "buffers\VertexArray.h"
 #include "Renderer2D.h"
 #include "Simple2DRenderer.h"
+#include "StaticSprite.h"

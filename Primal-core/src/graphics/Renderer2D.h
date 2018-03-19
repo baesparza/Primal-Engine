@@ -6,7 +6,7 @@ namespace primal
 {
 	namespace graphics
 	{
-
+		// Superclass with basic methods for renderers
 		class Renderer2D
 		{
 		public:
