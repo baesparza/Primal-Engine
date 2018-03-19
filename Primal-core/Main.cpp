@@ -4,6 +4,8 @@
 #include "src\input\Mouse.h"
 #include "src\input\Keyboard.h"
 
+#define BATCH_RENDERER 1
+
 int main()
 {
 	using namespace primal;
@@ -20,9 +22,15 @@ int main()
 
 	shader.setUniformMat4("pr_matrix", ortho);
 
+	#if BATCH_RENDERER
+	Sprite sprite1(4, 4, 3, 3, maths::vec4{0.5f, 0.1f, 0.4f, 1});
+	Sprite sprite2(8, 3, 1, 3, 1.f);
+	BatchRenderer2D renderer;
+	#else
 	StaticSprite sprite1(4, 4, 3, 3, maths::vec4{0.5f, 0.1f, 0.4f, 1}, shader);
 	StaticSprite sprite2(8, 3, 1, 3, 1.f, shader);
 	Simple2DRenderer renderer;
+	#endif
 
 	while (!window.closed())
 	{
@@ -32,8 +40,15 @@ int main()
 		shader.setUniform2f("light_pos", vec2(( float ) (pos.x * 16 / window.getWidth()), ( float ) (9 - pos.y * 9 / window.getHeigth())));
 
 		/////draw/////
+		#if BATCH_RENDERER
+		renderer.begin();
+		#endif
 		renderer.submit(&sprite1);
 		renderer.submit(&sprite2);
+		#if BATCH_RENDERER
+		renderer.end();
+		#endif
+
 		renderer.flush();
 
 		window.update();
