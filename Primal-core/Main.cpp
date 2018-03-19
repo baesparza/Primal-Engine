@@ -58,7 +58,7 @@ int main()
 		window.update();
 		
 
-		/////frame rate///
+		/////frame counter///
 		frames++;
 		if (time.elapsed() - timer > 1.f)
 		{
