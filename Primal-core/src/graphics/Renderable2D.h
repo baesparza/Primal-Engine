@@ -16,7 +16,7 @@ namespace primal
 		struct VertexData
 		{
 			maths::vec3 vertex;
-			maths::vec4 color;
+			unsigned int color;
 		};
 
 		// basic class for sprites

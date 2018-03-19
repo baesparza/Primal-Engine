@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <GL\glew.h>
 #include "Renderer2D.h"
 

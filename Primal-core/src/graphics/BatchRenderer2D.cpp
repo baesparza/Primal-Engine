@@ -26,21 +26,28 @@ namespace primal {
 			const maths::vec3& position = renderable->getPosition();
 			const maths::vec2& size = renderable->getSize();
 			const maths::vec4& color = renderable->getColor();
-			
+
+			int r = color.x * 255.0f;
+			int g = color.y * 255.0f;
+			int b = color.z * 255.0f;
+			int a = color.w * 255.0f;
+
+			unsigned int c = a << 24 | b << 16 | g << 8 | r;
+
 			m_Buffer->vertex = position;
-			m_Buffer->color = color;
+			m_Buffer->color = c;
 			m_Buffer++;
 			
 			m_Buffer->vertex = maths::vec3(position.x, position.y + size.y, position.z);
-			m_Buffer->color = color;
+			m_Buffer->color = c;
 			m_Buffer++;
 			
 			m_Buffer->vertex = maths::vec3(position.x + size.x, position.y + size.y, position.z);
-			m_Buffer->color = color;
+			m_Buffer->color = c;
 			m_Buffer++;
 			
 			m_Buffer->vertex = maths::vec3(position.x + size.x, position.y, position.z);
-			m_Buffer->color = color;
+			m_Buffer->color = c;
 			m_Buffer++;
 			
 			m_IndexCount += 6;
@@ -75,7 +82,7 @@ namespace primal {
 			glEnableVertexAttribArray(SHADER_VERTEX_INDEX);
 			glEnableVertexAttribArray(SHADER_COLOR_INDEX);
 			glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, ( const void* ) 0);
-			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, ( const void* ) (3 * sizeof(GLfloat)));
+			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, ( const void* )(offsetof(VertexData, VertexData::color)));
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 			GLuint * indices = new GLuint[RENDERER_INDICES_SIZE];
