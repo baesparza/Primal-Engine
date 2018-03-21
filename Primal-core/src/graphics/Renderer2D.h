@@ -10,9 +10,9 @@ namespace primal
 		class Renderer2D
 		{
 		public:
-			// TODO: if This is only used for the StaticSprite
-			// change Renderable2D  with StaticSprite
+			virtual void begin() { };
 			virtual void submit(const Renderable2D * renderable) = 0;
+			virtual void end() { };
 			virtual void flush() = 0;
 		};
 

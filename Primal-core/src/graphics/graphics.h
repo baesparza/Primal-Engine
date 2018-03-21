@@ -10,3 +10,5 @@
 #include "StaticSprite.h"
 #include "BatchRenderer2D.h"
 #include "Sprite.h"
+#include "layers\Layer.h"
+#include "layers\TileLayer.h"
