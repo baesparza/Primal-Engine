@@ -1,11 +1,15 @@
 #pragma once
 
-#include "Renderable2D.h"
+#include <vector>
+#include <GL\glew.h>
+#include "../maths/maths.h"
 
 namespace primal
 {
 	namespace graphics
 	{
+		class Renderable2D;
+
 		// Superclass with basic methods for renderers
 		class Renderer2D
 		{

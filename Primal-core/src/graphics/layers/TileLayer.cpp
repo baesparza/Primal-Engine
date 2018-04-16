@@ -6,7 +6,7 @@ namespace primal
 	{
 
 		TileLayer::TileLayer(Shader * shader) :
-			Layer(new BatchRenderer2D(), shader, maths::mat4::ortographic(-16, 16, -9, 9, -1, 1))
+			Layer(new BatchRenderer2D(), shader, maths::mat4::orthographic(-16, 16, -9, 9, -1, 1))
 		{
 		}
 

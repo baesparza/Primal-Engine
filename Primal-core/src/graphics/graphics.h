@@ -12,3 +12,4 @@
 #include "Sprite.h"
 #include "layers\Layer.h"
 #include "layers\TileLayer.h"
+#include "layers\Group.h"

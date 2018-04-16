@@ -80,7 +80,7 @@ namespace primal
 			return multiply(other);
 		}
 
-		mat4 mat4::ortographic(float left, float right, float bottom, float top, float near, float far)
+		mat4 mat4::orthographic(float left, float right, float bottom, float top, float near, float far)
 		{
 			mat4 result(1.f);
 

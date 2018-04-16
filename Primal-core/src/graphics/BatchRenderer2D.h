@@ -1,8 +1,9 @@
 #pragma once
 
 #include <cstddef>
-#include <GL\glew.h>
 #include "Renderer2D.h"
+#include "Renderable2D.h"
+#include "buffers\IndexBuffer.h"
 
 namespace primal {
 	namespace graphics {
