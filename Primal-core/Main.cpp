@@ -119,8 +119,13 @@ int main()
 	if (!dib)
 		return false;
 
+
 	//retrieve the image data
 	bits = FreeImage_GetBits(dib);
+
+	unsigned int bitsPerPixel = FreeImage_GetBPP(dib);
+	unsigned int pitch = FreeImage_GetPitch(dib);
+
 	//get the image width and height
 	width = FreeImage_GetWidth(dib);
 	height = FreeImage_GetHeight(dib);
@@ -128,9 +133,19 @@ int main()
 	if ((bits == 0) || (width == 0) || (height == 0))
 		return false;
 
-	std::cout << width << ", " << height << '\n';
+	for (int y = 0; y < height; y++)
+	{
+		BYTE* pixel = (BYTE*)bits;
+		for (int x = 0; x < width; x++)
+		{
+			std::cout << +pixel[FI_RGBA_RED] << ", " << +pixel[FI_RGBA_GREEN] << ", " << +pixel[FI_RGBA_BLUE] << '\n';
+			pixel += 3;
+		}
+		bits += pitch;
+	}
 
 
+	std::cin.get();
 	return 0;
 }
 
