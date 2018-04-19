@@ -2,7 +2,7 @@
 
 #include <GL\glew.h>
 #include <string>
-#include <FreeImage.h>
+#include "../utils/ImageLoad.h"
 
 namespace primal
 {

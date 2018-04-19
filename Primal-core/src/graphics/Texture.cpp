@@ -1,5 +1,4 @@
 #include "Texture.h"
-#include "../utils/ImageLoad.h"
 
 namespace primal
 {
