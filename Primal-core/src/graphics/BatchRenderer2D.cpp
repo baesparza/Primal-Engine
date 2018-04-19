@@ -17,7 +17,7 @@ namespace primal {
 		void BatchRenderer2D::begin()
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-			m_Buffer = ( VertexData * ) glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+			m_Buffer = (VertexData *)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 		}
 
 		void BatchRenderer2D::submit(const Renderable2D * renderable)
@@ -26,6 +26,7 @@ namespace primal {
 			const maths::vec3& position = renderable->getPosition();
 			const maths::vec2& size = renderable->getSize();
 			const maths::vec4& color = renderable->getColor();
+			const std::vector<maths::vec2>& texCoord = renderable->getTexCoord();
 
 			int r = color.x * 255.0f;
 			int g = color.y * 255.0f;
@@ -34,22 +35,26 @@ namespace primal {
 
 			unsigned int c = a << 24 | b << 16 | g << 8 | r;
 
-			m_Buffer->vertex = * m_TransformationBack * position;
+			m_Buffer->vertex = *m_TransformationBack * position;
+			m_Buffer->texCoord = texCoord[0];
 			m_Buffer->color = c;
 			m_Buffer++;
-			
-			m_Buffer->vertex = * m_TransformationBack * maths::vec3(position.x, position.y + size.y, position.z);
+
+			m_Buffer->vertex = *m_TransformationBack * maths::vec3(position.x, position.y + size.y, position.z);
+			m_Buffer->texCoord = texCoord[1];
 			m_Buffer->color = c;
 			m_Buffer++;
-			
-			m_Buffer->vertex = * m_TransformationBack * maths::vec3(position.x + size.x, position.y + size.y, position.z);
+
+			m_Buffer->vertex = *m_TransformationBack * maths::vec3(position.x + size.x, position.y + size.y, position.z);
+			m_Buffer->texCoord = texCoord[2];
 			m_Buffer->color = c;
 			m_Buffer++;
-			
-			m_Buffer->vertex = * m_TransformationBack * maths::vec3(position.x + size.x, position.y, position.z);
+
+			m_Buffer->vertex = *m_TransformationBack * maths::vec3(position.x + size.x, position.y, position.z);
+			m_Buffer->texCoord = texCoord[3];
 			m_Buffer->color = c;
 			m_Buffer++;
-			
+
 			m_IndexCount += 6;
 		}
 
@@ -78,11 +83,17 @@ namespace primal {
 
 			glBindVertexArray(m_VAO);
 			glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+
 			glBufferData(GL_ARRAY_BUFFER, RENDERER_BUFFER_SIZE, NULL, GL_DYNAMIC_DRAW);
+
 			glEnableVertexAttribArray(SHADER_VERTEX_INDEX);
+			glEnableVertexAttribArray(SHADER_TEXCOORD_INDEX);
 			glEnableVertexAttribArray(SHADER_COLOR_INDEX);
-			glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, ( const void* ) 0);
-			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, ( const void* )(offsetof(VertexData, VertexData::color)));
+
+			glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const void*)0);
+			glVertexAttribPointer(SHADER_TEXCOORD_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const void*)(offsetof(VertexData, VertexData::texCoord)));
+			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, (const void*)(offsetof(VertexData, VertexData::color)));
+
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 			GLuint * indices = new GLuint[RENDERER_INDICES_SIZE];

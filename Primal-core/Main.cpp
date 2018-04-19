@@ -17,22 +17,35 @@ int main()
 
 	mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 
-	Shader* shader = new Shader("./res/shader/basic.ver", "./res/shader/basic.frag");
+	Shader* shader = new Shader("./res/shader/basic.vert", "./res/shader/basic.frag");
 	shader->enable();
 
 	TileLayer layer(shader);
 
-	Group* group = new Group(mat4::translation(vec3(-15.0f, 5.0f, 0)));
-	group->add(new Sprite(0, 0, 6, 3, maths::vec4(1, 1, 1, 1)));
-	Group* button = new Group(mat4::translation(vec3(0.5f, 0.5f, 0.0f)));
+	for (float y = -9.0f; y < 9.0f; y++)
+	{
+		for (float x = -16.0f; x < 16.0f; x++)
+		{
+			layer.add(new Sprite(x, y, 0.9f, 0.9f, maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
+		}
+	}
 
-	button->add(new Sprite(0.f, 0.f, 5.f, 2.0f, maths::vec4(1, 0, 1, 1)));
-	button->add(new Sprite(0.5f, 0.5f, 3.f, 1.0f, maths::vec4(0.2f, 0.3f, 0.8f, 1)));
-	group->add(button);
-	layer.add(group);
+	//	Group* group = new Group(mat4::translation(vec3(-15.0f, 5.0f, 0)));
+	//	group->add(new Sprite(0, 0, 6, 3, maths::vec4(1, 1, 1, 1)));
+	//	Group* button = new Group(mat4::translation(vec3(0.5f, 0.5f, 0.0f)));
+	//	
+	//	button->add(new Sprite(0.f, 0.f, 5.f, 2.0f, maths::vec4(1, 0, 1, 1)));
+	//	button->add(new Sprite(0.5f, 0.5f, 3.f, 1.0f, maths::vec4(0.2f, 0.3f, 0.8f, 1)));
+	//	group->add(button);
+	//	layer.add(group);
 
+	glActiveTexture(GL_TEXTURE0);
 	Texture texture("test.png");
 	texture.bind();
+
+	shader->enable();
+	shader->setUniform1i("tex", 0);
+	shader->setUniformMat4("pr_matrix", mat4::orthographic(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
 
 	/////frame counter/////
 	Timer time;

@@ -160,7 +160,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shader\basic.ver" />
     <None Include="res\shader\basic.frag" />
+    <None Include="res\shader\basic.vert" />
   </ItemGroup>
 </Project>

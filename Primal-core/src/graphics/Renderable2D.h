@@ -18,6 +18,8 @@ namespace primal
 		struct VertexData
 		{
 			maths::vec3 vertex;
+			maths::vec2 texCoord;
+			//  unsigned int texID;
 			unsigned int color;
 		};
 
@@ -28,12 +30,15 @@ namespace primal
 			maths::vec3 m_Position;
 			maths::vec2 m_Size;
 			maths::vec4 m_Color;
+			std::vector<maths::vec2> m_TexCoord;
 		protected:
-			Renderable2D() {};
+			Renderable2D() { setTexCoordDefault(); }
 		public:
 			Renderable2D(maths::vec3 position, maths::vec2 size, maths::vec4 color) :
 				m_Position(position), m_Size(size), m_Color(color)
-			{ }
+			{
+				setTexCoordDefault();
+			}
 
 			virtual ~Renderable2D()
 			{ }
@@ -41,11 +46,20 @@ namespace primal
 			virtual void submit(Renderer2D* renderer) const
 			{
 				renderer->submit(this);
-			};
+			}
 
 			inline const maths::vec3& getPosition() const { return m_Position; };
 			inline const maths::vec2& getSize() const { return m_Size; };
 			inline const maths::vec4& getColor() const { return m_Color; };
+			inline const std::vector<maths::vec2>& getTexCoord() const { return m_TexCoord; };
+		private:
+			void setTexCoordDefault()
+			{
+				m_TexCoord.push_back(maths::vec2(0, 0));
+				m_TexCoord.push_back(maths::vec2(0, 1));
+				m_TexCoord.push_back(maths::vec2(1, 1));
+				m_TexCoord.push_back(maths::vec2(1, 0));
+			}
 		};
 	}
 }
