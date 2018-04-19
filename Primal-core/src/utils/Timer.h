@@ -1,5 +1,6 @@
 #pragma once
 
+//	#include <WinBase.h>
 #include <Windows.h>
 
 namespace primal
@@ -28,7 +29,7 @@ namespace primal
 			LARGE_INTEGER current;
 			QueryPerformanceCounter(&current);
 			unsigned __int64 cycles = current.QuadPart - m_Start.QuadPart;
-			return ( float ) (cycles * m_Frequency);
+			return (float)(cycles * m_Frequency);
 		}
 
 	};

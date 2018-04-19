@@ -1,18 +1,17 @@
 #include <time.h>
 
-#include "src\graphics\graphics.h"
+#include "src\utils\fileutils.h"  
+#include "src\utils\Timer.h"         
 #include "src\maths\maths.h"
 #include "src\input\Mouse.h"
 #include "src\input\Keyboard.h"
-#include "src\utils\fileutils.h"
-#include "src\utils\Timer.h"
+#include "src\graphics\graphics.h"
 
 #define BATCH_RENDERER 1
 #define TEST_50K_SPRITES 0
 
-#include <FreeImage.h>
 
-#if 0
+#if 1
 int main()
 {
 	using namespace primal;
@@ -57,12 +56,15 @@ int main()
 	TileLayer layer2(&shader2);
 	layer2.add(new Sprite(-2, -2, 4, 4, maths::vec4(1, 0, 1, 1)));
 
+	Texture texture("test.png");
+
 	Timer time;
 	float timer = 0;
 	unsigned int frames = 0;
 
 	while (!window.closed())
 	{
+
 		window.clear();
 		vec2 pos = Mouse::getPosition(window);
 		shader.enable();
@@ -70,9 +72,15 @@ int main()
 		//shader.setUniform2f("light_pos", vec2((float)(x * 32.0f / 960.0f - 16.0f), (float)(9.0f - y * 18.0f / 540.0f)));
 		//shader.setUniform2f("light_pos", vec2(-8, -3));
 		shader2.enable();
-
 		layer.render();
 		//	layer2.render();
+
+		glBegin(GL_QUADS);
+		glVertex2f(0, 0);
+		glVertex2f(0, 4);
+		glVertex2f(4, 4);
+		glVertex2f(4, 0);
+		glEnd();
 
 		window.update();
 		frames++;
