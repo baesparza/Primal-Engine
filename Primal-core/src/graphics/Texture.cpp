@@ -8,7 +8,7 @@ namespace primal
 			: m_Filename(filename)
 		{
 
-			m_TID = load();
+			m_TexID = load();
 
 		}
 
@@ -18,7 +18,7 @@ namespace primal
 
 		void Texture::bind() const
 		{
-			glBindTexture(GL_TEXTURE_2D, m_TID);
+			glBindTexture(GL_TEXTURE_2D, m_TexID);
 		}
 
 		void Texture::unbind() const

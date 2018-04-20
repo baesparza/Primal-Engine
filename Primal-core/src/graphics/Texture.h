@@ -13,7 +13,7 @@ namespace primal
 		{
 		private:
 			std::string m_Filename;
-			GLuint m_TID;
+			GLuint m_TexID;
 			GLsizei m_Width, m_Height;
 		public:
 			Texture(const std::string& filename);
@@ -21,6 +21,7 @@ namespace primal
 			void bind() const;
 			void unbind() const;
 
+			inline const unsigned int getID() const { return m_TexID; }
 			inline const unsigned int getWidth() const { return m_Width; }
 			inline const unsigned int getHeight() const { return m_Height; }
 		private:

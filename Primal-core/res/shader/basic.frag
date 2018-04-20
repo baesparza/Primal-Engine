@@ -8,14 +8,21 @@ in DATA
 {
 	vec4 position;
 	vec2 texCoord;
+	float texID;
 	vec4 color;
 } FS_IN;
 
-uniform sampler2D tex;
+uniform sampler2D textures[32];
 
 void main()
 {
 	float intensity = 1.0f / length(FS_IN.position.xy - light_pos);
-	color = FS_IN.color * intensity;
-	color = texture(tex, FS_IN.texCoord) * intensity;
+	vec4 texColor = FS_IN.color;
+	if (FS_IN.texID > 0.0)
+	{
+		int texID = int(FS_IN.texID - 0.5);
+		texColor = texture(textures[texID], FS_IN.texCoord);
+		//texColor = vec4(texID, 0, 0, 0);
+	}
+	color = texColor;// * intensity;
 }

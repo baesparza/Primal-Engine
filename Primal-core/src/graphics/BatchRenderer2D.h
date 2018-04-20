@@ -16,7 +16,8 @@ namespace primal {
 
 		#define SHADER_VERTEX_INDEX 0
 		#define SHADER_TEXCOORD_INDEX 1
-		#define SHADER_COLOR_INDEX  2
+		#define SHADER_TEXID_INDEX  2
+		#define SHADER_COLOR_INDEX  3
 
 		class BatchRenderer2D : public Renderer2D
 		{
@@ -26,6 +27,7 @@ namespace primal {
 			IndexBuffer* m_IBO;
 			GLsizei m_IndexCount;
 			VertexData * m_Buffer;
+			std::vector<GLuint> m_TextureSlots;
 		public:
 			BatchRenderer2D();
 			~BatchRenderer2D();

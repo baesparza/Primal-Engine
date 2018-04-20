@@ -27,32 +27,66 @@ namespace primal {
 			const maths::vec2& size = renderable->getSize();
 			const maths::vec4& color = renderable->getColor();
 			const std::vector<maths::vec2>& texCoord = renderable->getTexCoord();
+			const GLuint texID = renderable->getTexID();
 
-			int r = color.x * 255.0f;
-			int g = color.y * 255.0f;
-			int b = color.z * 255.0f;
-			int a = color.w * 255.0f;
 
-			unsigned int c = a << 24 | b << 16 | g << 8 | r;
+			unsigned int c = 0;
+
+			float ts = 0.0f;
+			bool found = false;
+			if (texID > 0)
+			{
+				for (int i = 0; i < m_TextureSlots.size(); i++)
+					if (m_TextureSlots[i] == texID)
+					{
+						ts = (float)(i + 1);
+						found = true;
+						break;
+					}
+				if (!found)
+				{
+					if (m_TextureSlots.size() >= 32)
+					{
+						end();
+						flush();
+						begin();
+					}
+					m_TextureSlots.push_back(texID);
+					ts = (float)m_TextureSlots.size();
+				}
+			}
+			else
+			{
+				int r = color.x * 255.0f;
+				int g = color.y * 255.0f;
+				int b = color.z * 255.0f;
+				int a = color.w * 255.0f;
+
+				c = a << 24 | b << 16 | g << 8 | r;
+			}
 
 			m_Buffer->vertex = *m_TransformationBack * position;
 			m_Buffer->texCoord = texCoord[0];
 			m_Buffer->color = c;
+			m_Buffer->texID = ts;
 			m_Buffer++;
 
 			m_Buffer->vertex = *m_TransformationBack * maths::vec3(position.x, position.y + size.y, position.z);
 			m_Buffer->texCoord = texCoord[1];
 			m_Buffer->color = c;
+			m_Buffer->texID = ts;
 			m_Buffer++;
 
 			m_Buffer->vertex = *m_TransformationBack * maths::vec3(position.x + size.x, position.y + size.y, position.z);
 			m_Buffer->texCoord = texCoord[2];
 			m_Buffer->color = c;
+			m_Buffer->texID = ts;
 			m_Buffer++;
 
 			m_Buffer->vertex = *m_TransformationBack * maths::vec3(position.x + size.x, position.y, position.z);
 			m_Buffer->texCoord = texCoord[3];
 			m_Buffer->color = c;
+			m_Buffer->texID = ts;
 			m_Buffer++;
 
 			m_IndexCount += 6;
@@ -66,6 +100,12 @@ namespace primal {
 
 		void BatchRenderer2D::flush()
 		{
+			for (int i = 0; i < m_TextureSlots.size(); i++)
+			{
+				glActiveTexture(GL_TEXTURE0 + i);
+				glBindTexture(GL_TEXTURE_2D, m_TextureSlots[i]);
+			}
+
 			glBindVertexArray(m_VAO);
 			m_IBO->bind();
 
@@ -88,10 +128,12 @@ namespace primal {
 
 			glEnableVertexAttribArray(SHADER_VERTEX_INDEX);
 			glEnableVertexAttribArray(SHADER_TEXCOORD_INDEX);
+			glEnableVertexAttribArray(SHADER_TEXID_INDEX);
 			glEnableVertexAttribArray(SHADER_COLOR_INDEX);
 
 			glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const void*)0);
 			glVertexAttribPointer(SHADER_TEXCOORD_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const void*)(offsetof(VertexData, VertexData::texCoord)));
+			glVertexAttribPointer(SHADER_TEXID_INDEX, 1, GL_FLOAT, GL_TRUE, RENDERER_VERTEX_SIZE, (const void*)(offsetof(VertexData, VertexData::texID)));
 			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, (const void*)(offsetof(VertexData, VertexData::color)));
 
 			glBindBuffer(GL_ARRAY_BUFFER, 0);

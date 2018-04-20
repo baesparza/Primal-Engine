@@ -6,6 +6,7 @@
 
 #include "Shader.h"
 #include "Renderer2D.h"
+#include "Texture.h"
 
 #include "../maths/maths.h"
 
@@ -19,7 +20,7 @@ namespace primal
 		{
 			maths::vec3 vertex;
 			maths::vec2 texCoord;
-			//  unsigned int texID;
+			float texID;
 			unsigned int color;
 		};
 
@@ -31,6 +32,7 @@ namespace primal
 			maths::vec2 m_Size;
 			maths::vec4 m_Color;
 			std::vector<maths::vec2> m_TexCoord;
+			Texture* m_Texture;
 		protected:
 			Renderable2D() { setTexCoordDefault(); }
 		public:
@@ -52,6 +54,8 @@ namespace primal
 			inline const maths::vec2& getSize() const { return m_Size; };
 			inline const maths::vec4& getColor() const { return m_Color; };
 			inline const std::vector<maths::vec2>& getTexCoord() const { return m_TexCoord; };
+
+			inline const GLuint getTexID() const { return (m_Texture == nullptr) ? 0 : m_Texture->getID(); }
 		private:
 			void setTexCoordDefault()
 			{
