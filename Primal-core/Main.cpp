@@ -22,23 +22,21 @@ int main()
 
 	TileLayer layer(shader);
 
-	Texture* texture = new Texture("test.png");
-	Texture* texture2 = new Texture("test2.jpg");
-	Texture* texture3 = new Texture("test3.png");
+	Texture* textures[] = { new Texture("test.png"), new Texture("test2.jpg"), new Texture("test3.png") };
 
 	for (float y = -9.0f; y < 9.0f; y++)
 	{
 		for (float x = -16.0f; x < 16.0f; x++)
 		{
 			//	layer.add(new Sprite(x, y, 1.f, 1.f, maths::vec4(1, 0, 1, 1)));
-			layer.add(new Sprite(x, y, 1.f, 1.f, (rand() % 2 == 0) ? texture : texture3));
+			layer.add(new Sprite(x, y, 1.f, 1.f, (rand() % 2 == 0) ? textures[0] : textures[2]));
 		}
 	}
 
 	Group* group = new Group(mat4::translation(vec3(-15.0f, 5.0f, 0)));
 	group->add(new Sprite(0, 0, 6, 3, maths::vec4(1, 1, 1, 1)));
 	Group* button = new Group(mat4::translation(vec3(0.5f, 0.5f, 0.0f)));
-	button->add(new Sprite(0.f, 0.f, 5.f, 2.0f, texture2));
+	button->add(new Sprite(0.f, 0.f, 5.f, 2.0f, textures[1]));
 	group->add(button);
 	layer.add(group);
 
@@ -75,8 +73,8 @@ int main()
 		}
 	}
 
-	delete texture;
-	delete texture2;
+	for (const Texture* t : textures)
+		delete t;
 
 	return 0;
 }
