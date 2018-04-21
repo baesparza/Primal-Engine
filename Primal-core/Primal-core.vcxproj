@@ -141,6 +141,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ext\FreeType-GL\distance-field.c" />
+    <ClCompile Include="ext\FreeType-GL\edtaa3func.c" />
+    <ClCompile Include="ext\FreeType-GL\font-manager.c" />
+    <ClCompile Include="ext\FreeType-GL\makefont.c" />
+    <ClCompile Include="ext\FreeType-GL\platform.c" />
+    <ClCompile Include="ext\FreeType-GL\text-buffer.c" />
+    <ClCompile Include="ext\FreeType-GL\texture-atlas.c" />
+    <ClCompile Include="ext\FreeType-GL\texture-font.c" />
+    <ClCompile Include="ext\FreeType-GL\utf8-utils.c" />
+    <ClCompile Include="ext\FreeType-GL\vector.c" />
+    <ClCompile Include="ext\FreeType-GL\vertex-attribute.c" />
+    <ClCompile Include="ext\FreeType-GL\vertex-buffer.c" />
     <ClCompile Include="ext\FreeType\src\autofit\autofit.c" />
     <ClCompile Include="ext\FreeType\src\base\ftbase.c" />
     <ClCompile Include="ext\FreeType\src\base\ftbbox.c" />
@@ -202,6 +214,21 @@
     <ClCompile Include="src\maths\vec4.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ext\FreeType-GL\distance-field.h" />
+    <ClInclude Include="ext\FreeType-GL\edtaa3func.h" />
+    <ClInclude Include="ext\FreeType-GL\font-manager.h" />
+    <ClInclude Include="ext\FreeType-GL\freetype-gl.h" />
+    <ClInclude Include="ext\FreeType-GL\markup.h" />
+    <ClInclude Include="ext\FreeType-GL\opengl.h" />
+    <ClInclude Include="ext\FreeType-GL\platform.h" />
+    <ClInclude Include="ext\FreeType-GL\text-buffer.h" />
+    <ClInclude Include="ext\FreeType-GL\texture-atlas.h" />
+    <ClInclude Include="ext\FreeType-GL\texture-font.h" />
+    <ClInclude Include="ext\FreeType-GL\utf8-utils.h" />
+    <ClInclude Include="ext\FreeType-GL\vec234.h" />
+    <ClInclude Include="ext\FreeType-GL\vector.h" />
+    <ClInclude Include="ext\FreeType-GL\vertex-attribute.h" />
+    <ClInclude Include="ext\FreeType-GL\vertex-buffer.h" />
     <ClInclude Include="ext\FreeType\include\config\ftconfig.h" />
     <ClInclude Include="ext\FreeType\include\config\ftheader.h" />
     <ClInclude Include="ext\FreeType\include\config\ftmodule.h" />
