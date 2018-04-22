@@ -219,22 +219,7 @@
     <ClCompile Include="src\graphics\Window.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="ext\FreeType-GL\distance-field.c">
-      <Filter>Source Files\ext\FreeType-GL</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\FreeType-GL\edtaa3func.c">
-      <Filter>Source Files\ext\FreeType-GL</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\FreeType-GL\font-manager.c">
-      <Filter>Source Files\ext\FreeType-GL</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\FreeType-GL\makefont.c">
-      <Filter>Source Files\ext\FreeType-GL</Filter>
-    </ClCompile>
     <ClCompile Include="ext\FreeType-GL\platform.c">
-      <Filter>Source Files\ext\FreeType-GL</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\FreeType-GL\text-buffer.c">
       <Filter>Source Files\ext\FreeType-GL</Filter>
     </ClCompile>
     <ClCompile Include="ext\FreeType-GL\texture-atlas.c">
@@ -243,17 +228,11 @@
     <ClCompile Include="ext\FreeType-GL\texture-font.c">
       <Filter>Source Files\ext\FreeType-GL</Filter>
     </ClCompile>
-    <ClCompile Include="ext\FreeType-GL\utf8-utils.c">
-      <Filter>Source Files\ext\FreeType-GL</Filter>
-    </ClCompile>
     <ClCompile Include="ext\FreeType-GL\vector.c">
       <Filter>Source Files\ext\FreeType-GL</Filter>
     </ClCompile>
-    <ClCompile Include="ext\FreeType-GL\vertex-attribute.c">
-      <Filter>Source Files\ext\FreeType-GL</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\FreeType-GL\vertex-buffer.c">
-      <Filter>Source Files\ext\FreeType-GL</Filter>
+    <ClCompile Include="src\graphics\Label.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -356,19 +335,7 @@
     <ClInclude Include="src\graphics\Window.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="ext\FreeType-GL\distance-field.h">
-      <Filter>Header Files\ext\FreeType-GL</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\FreeType-GL\edtaa3func.h">
-      <Filter>Header Files\ext\FreeType-GL</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\FreeType-GL\font-manager.h">
-      <Filter>Header Files\ext\FreeType-GL</Filter>
-    </ClInclude>
     <ClInclude Include="ext\FreeType-GL\freetype-gl.h">
-      <Filter>Header Files\ext\FreeType-GL</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\FreeType-GL\markup.h">
       <Filter>Header Files\ext\FreeType-GL</Filter>
     </ClInclude>
     <ClInclude Include="ext\FreeType-GL\opengl.h">
@@ -377,16 +344,10 @@
     <ClInclude Include="ext\FreeType-GL\platform.h">
       <Filter>Header Files\ext\FreeType-GL</Filter>
     </ClInclude>
-    <ClInclude Include="ext\FreeType-GL\text-buffer.h">
-      <Filter>Header Files\ext\FreeType-GL</Filter>
-    </ClInclude>
     <ClInclude Include="ext\FreeType-GL\texture-atlas.h">
       <Filter>Header Files\ext\FreeType-GL</Filter>
     </ClInclude>
     <ClInclude Include="ext\FreeType-GL\texture-font.h">
-      <Filter>Header Files\ext\FreeType-GL</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\FreeType-GL\utf8-utils.h">
       <Filter>Header Files\ext\FreeType-GL</Filter>
     </ClInclude>
     <ClInclude Include="ext\FreeType-GL\vec234.h">
@@ -395,11 +356,8 @@
     <ClInclude Include="ext\FreeType-GL\vector.h">
       <Filter>Header Files\ext\FreeType-GL</Filter>
     </ClInclude>
-    <ClInclude Include="ext\FreeType-GL\vertex-attribute.h">
-      <Filter>Header Files\ext\FreeType-GL</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\FreeType-GL\vertex-buffer.h">
-      <Filter>Header Files\ext\FreeType-GL</Filter>
+    <ClInclude Include="src\graphics\Label.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include\;$(SolutionDir)Dependencies\GLEW\include\</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>GLEW_STATIC;FT2_BUILD_LIBRARY;WIN32;_LIB;_MBCS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;FT2_BUILD_LIBRARY;WIN32;_LIB;_MBCS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>UninitializedLocalUsageCheck</BasicRuntimeChecks>
     </ClCompile>
     <Link>
@@ -113,7 +113,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include\;$(SolutionDir)Dependencies\GLEW\include\</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>GLEW_STATIC;FT2_BUILD_LIBRARY;WIN32;_LIB;_MBCS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;FT2_BUILD_LIBRARY;WIN32;_LIB;_MBCS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
@@ -141,18 +141,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ext\FreeType-GL\distance-field.c" />
-    <ClCompile Include="ext\FreeType-GL\edtaa3func.c" />
-    <ClCompile Include="ext\FreeType-GL\font-manager.c" />
-    <ClCompile Include="ext\FreeType-GL\makefont.c" />
     <ClCompile Include="ext\FreeType-GL\platform.c" />
-    <ClCompile Include="ext\FreeType-GL\text-buffer.c" />
     <ClCompile Include="ext\FreeType-GL\texture-atlas.c" />
     <ClCompile Include="ext\FreeType-GL\texture-font.c" />
-    <ClCompile Include="ext\FreeType-GL\utf8-utils.c" />
     <ClCompile Include="ext\FreeType-GL\vector.c" />
-    <ClCompile Include="ext\FreeType-GL\vertex-attribute.c" />
-    <ClCompile Include="ext\FreeType-GL\vertex-buffer.c" />
     <ClCompile Include="ext\FreeType\src\autofit\autofit.c" />
     <ClCompile Include="ext\FreeType\src\base\ftbase.c" />
     <ClCompile Include="ext\FreeType\src\base\ftbbox.c" />
@@ -196,6 +188,7 @@
     <ClCompile Include="src\graphics\buffers\IndexBuffer.cpp" />
     <ClCompile Include="src\graphics\buffers\Buffer.cpp" />
     <ClCompile Include="src\graphics\buffers\VertexArray.cpp" />
+    <ClCompile Include="src\graphics\Label.cpp" />
     <ClCompile Include="src\graphics\layers\Group.cpp" />
     <ClCompile Include="src\graphics\layers\Layer.cpp" />
     <ClCompile Include="src\graphics\layers\TileLayer.cpp" />
@@ -214,21 +207,13 @@
     <ClCompile Include="src\maths\vec4.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ext\FreeType-GL\distance-field.h" />
-    <ClInclude Include="ext\FreeType-GL\edtaa3func.h" />
-    <ClInclude Include="ext\FreeType-GL\font-manager.h" />
     <ClInclude Include="ext\FreeType-GL\freetype-gl.h" />
-    <ClInclude Include="ext\FreeType-GL\markup.h" />
     <ClInclude Include="ext\FreeType-GL\opengl.h" />
     <ClInclude Include="ext\FreeType-GL\platform.h" />
-    <ClInclude Include="ext\FreeType-GL\text-buffer.h" />
     <ClInclude Include="ext\FreeType-GL\texture-atlas.h" />
     <ClInclude Include="ext\FreeType-GL\texture-font.h" />
-    <ClInclude Include="ext\FreeType-GL\utf8-utils.h" />
     <ClInclude Include="ext\FreeType-GL\vec234.h" />
     <ClInclude Include="ext\FreeType-GL\vector.h" />
-    <ClInclude Include="ext\FreeType-GL\vertex-attribute.h" />
-    <ClInclude Include="ext\FreeType-GL\vertex-buffer.h" />
     <ClInclude Include="ext\FreeType\include\config\ftconfig.h" />
     <ClInclude Include="ext\FreeType\include\config\ftheader.h" />
     <ClInclude Include="ext\FreeType\include\config\ftmodule.h" />
@@ -240,6 +225,7 @@
     <ClInclude Include="src\graphics\buffers\Buffer.h" />
     <ClInclude Include="src\graphics\buffers\VertexArray.h" />
     <ClInclude Include="src\graphics\graphics.h" />
+    <ClInclude Include="src\graphics\Label.h" />
     <ClInclude Include="src\graphics\layers\Group.h" />
     <ClInclude Include="src\graphics\layers\Layer.h" />
     <ClInclude Include="src\graphics\layers\TileLayer.h" />

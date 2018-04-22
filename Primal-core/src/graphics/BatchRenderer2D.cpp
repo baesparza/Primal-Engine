@@ -1,7 +1,9 @@
 #include "BatchRenderer2D.h"
 
-namespace primal {
-	namespace graphics {
+namespace primal
+{
+	namespace graphics
+	{
 
 		BatchRenderer2D::BatchRenderer2D()
 		{
@@ -17,7 +19,7 @@ namespace primal {
 		void BatchRenderer2D::begin()
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-			m_Buffer = (VertexData *)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+			m_Buffer = (VertexData *) glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 		}
 
 		void BatchRenderer2D::submit(const Renderable2D * renderable)
@@ -39,7 +41,7 @@ namespace primal {
 				for (int i = 0; i < m_TextureSlots.size(); i++)
 					if (m_TextureSlots[i] == texID)
 					{
-						ts = (float)(i + 1);
+						ts = (float) (i + 1);
 						found = true;
 						break;
 					}
@@ -52,7 +54,7 @@ namespace primal {
 						begin();
 					}
 					m_TextureSlots.push_back(texID);
-					ts = (float)m_TextureSlots.size();
+					ts = (float) m_TextureSlots.size();
 				}
 			}
 			else
@@ -116,6 +118,54 @@ namespace primal {
 			m_IndexCount = 0;
 		}
 
+		void BatchRenderer2D::drawString(const std::string & text, const maths::vec3 & position, const maths::vec4 & color)
+		{
+			using namespace ftgl;
+
+			float ts = 0.0f;
+			bool found = false;
+			for (int i = 0; i < m_TextureSlots.size(); i++)
+				if (m_TextureSlots[i] == m_FTAtlas->id)
+				{
+					ts = (float) (i + 1);
+					found = true;
+					break;
+				}
+			if (!found)
+			{
+				if (m_TextureSlots.size() >= 32)
+				{
+					end();
+					flush();
+					begin();
+				}
+				m_TextureSlots.push_back(m_FTAtlas->id);
+				ts = (float) m_TextureSlots.size();
+			}
+
+			m_Buffer->vertex = maths::vec3(-8, -8, 0);
+			m_Buffer->texCoord = maths::vec2(0, 1);
+			m_Buffer->texID = ts;
+			m_Buffer++;
+
+			m_Buffer->vertex = maths::vec3(-8, 8, 0);
+			m_Buffer->texCoord = maths::vec2(0, 0);
+			m_Buffer->texID = ts;
+			m_Buffer++;
+
+			m_Buffer->vertex = maths::vec3(0, 8, 0);
+			m_Buffer->texCoord = maths::vec2(1, 0);
+			m_Buffer->texID = ts;
+			m_Buffer++;
+
+			m_Buffer->vertex = maths::vec3(0, -8, 0);
+			m_Buffer->texCoord = maths::vec2(1, 1);
+			m_Buffer->texID = ts;
+			m_Buffer++;
+
+			m_IndexCount += 6;
+		}
+
 		void BatchRenderer2D::init()
 		{
 			glGenVertexArrays(1, &m_VAO);
@@ -131,10 +181,10 @@ namespace primal {
 			glEnableVertexAttribArray(SHADER_TEXID_INDEX);
 			glEnableVertexAttribArray(SHADER_COLOR_INDEX);
 
-			glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const void*)0);
-			glVertexAttribPointer(SHADER_TEXCOORD_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const void*)(offsetof(VertexData, VertexData::texCoord)));
-			glVertexAttribPointer(SHADER_TEXID_INDEX, 1, GL_FLOAT, GL_TRUE, RENDERER_VERTEX_SIZE, (const void*)(offsetof(VertexData, VertexData::texID)));
-			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, (const void*)(offsetof(VertexData, VertexData::color)));
+			glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const void*) 0);
+			glVertexAttribPointer(SHADER_TEXCOORD_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const void*) (offsetof(VertexData, VertexData::texCoord)));
+			glVertexAttribPointer(SHADER_TEXID_INDEX, 1, GL_FLOAT, GL_TRUE, RENDERER_VERTEX_SIZE, (const void*) (offsetof(VertexData, VertexData::texID)));
+			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, (const void*) (offsetof(VertexData, VertexData::color)));
 
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -155,6 +205,9 @@ namespace primal {
 			m_IBO = new IndexBuffer(indices, RENDERER_INDICES_SIZE);
 			glBindVertexArray(0);
 
+			/////////initialize font////////////
+			m_FTAtlas = ftgl::texture_atlas_new(512, 512, 1);
+			m_FTFont = ftgl::texture_font_new_from_file(m_FTAtlas, 20, "arial.ttf");
 
 		}
 

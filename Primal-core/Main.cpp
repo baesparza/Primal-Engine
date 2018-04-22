@@ -33,10 +33,10 @@ int main()
 		}
 	}
 
-	Group* group = new Group(mat4::translation(vec3(-15.0f, 5.0f, 0)));
+	Group* group = new Group(mat4::translation(vec3(5.0f, 5.0f, 0)));
 	group->add(new Sprite(0, 0, 6, 3, maths::vec4(1, 1, 1, 1)));
 	Group* button = new Group(mat4::translation(vec3(0.5f, 0.5f, 0.0f)));
-	button->add(new Sprite(0.f, 0.f, 5.f, 2.0f, textures[1]));
+	button->add(new Sprite(0.f, 0.f, 5.f, 1.5f, textures[1]));
 	group->add(button);
 	layer.add(group);
 

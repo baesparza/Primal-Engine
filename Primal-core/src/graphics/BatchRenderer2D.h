@@ -5,6 +5,8 @@
 #include "Renderable2D.h"
 #include "buffers\IndexBuffer.h"
 
+#include "../../ext/FreeType-GL/freetype-gl.h"
+
 namespace primal {
 	namespace graphics {
 
@@ -28,6 +30,9 @@ namespace primal {
 			GLsizei m_IndexCount;
 			VertexData * m_Buffer;
 			std::vector<GLuint> m_TextureSlots;
+
+			ftgl::texture_atlas_t * m_FTAtlas;
+			ftgl::texture_font_t * m_FTFont;
 		public:
 			BatchRenderer2D();
 			~BatchRenderer2D();
@@ -35,6 +40,8 @@ namespace primal {
 			void submit(const Renderable2D * renderable) override;
 			void end() override;
 			void flush() override;
+
+			void drawString(const std::string& text, const maths::vec3 & position, const maths::vec4& color) override;
 		private:
 			void init();
 		};

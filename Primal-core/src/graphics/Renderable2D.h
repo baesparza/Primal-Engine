@@ -34,10 +34,10 @@ namespace primal
 			std::vector<maths::vec2> m_TexCoord;
 			Texture* m_Texture;
 		protected:
-			Renderable2D() { setTexCoordDefault(); }
+			Renderable2D() :m_Texture(nullptr) { setTexCoordDefault(); }
 		public:
 			Renderable2D(maths::vec3 position, maths::vec2 size, maths::vec4 color) :
-				m_Position(position), m_Size(size), m_Color(color)
+				m_Position(position), m_Size(size), m_Color(color), m_Texture(nullptr)
 			{
 				setTexCoordDefault();
 			}
@@ -55,7 +55,7 @@ namespace primal
 			inline const maths::vec4& getColor() const { return m_Color; };
 			inline const std::vector<maths::vec2>& getTexCoord() const { return m_TexCoord; };
 
-			inline const GLuint getTexID() const { return (m_Texture == nullptr) ? 0 : m_Texture->getID(); }
+			inline const GLuint getTexID() const { return m_Texture ? m_Texture->getID() : 0; }
 		private:
 			void setTexCoordDefault()
 			{
