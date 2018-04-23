@@ -7,7 +7,7 @@
 #include "src\input\Keyboard.h"
 #include "src\graphics\graphics.h"
 
-#if 1
+#if 0
 int main()
 {
 	using namespace primal;
