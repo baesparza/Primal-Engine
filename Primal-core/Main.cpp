@@ -7,10 +7,7 @@
 #include "src\input\Keyboard.h"
 #include "src\graphics\graphics.h"
 
-#include <ft2build.h>
-#include FT_FREETYPE_H  
-
-#if 0
+#if 1
 int main()
 {
 	using namespace primal;
@@ -26,7 +23,7 @@ int main()
 
 	TileLayer layer(shader);
 
-	Texture* textures[] = { new Texture("test.png"), new Texture("test2.jpg"), new Texture("test3.png") };
+	Texture* textures[] = { new Texture("./res/images/test.png"), new Texture("./res/images/test2.jpg"), new Texture("./res/images/test3.png") };
 
 	for (float y = -9.0f; y < 9.0f; y++)
 	{
@@ -156,7 +153,7 @@ int main()
 
 	// Load font as face
 	FT_Face face;
-	if (FT_New_Face(ft, "arial.ttf", 0, &face))
+	if (FT_New_Face(ft, "./res/fonts/Monoton-Regular.ttf", 0, &face))
 		std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
 
 	// Set size to load glyphs as
