@@ -120,7 +120,7 @@ namespace primal
 
 		void BatchRenderer2D::drawString(const std::string & text, const maths::vec3 & position, const maths::vec4 & color)
 		{
-			using namespace ftgl;
+			/*using namespace ftgl;
 
 			float ts = 0.0f;
 			bool found = false;
@@ -163,7 +163,7 @@ namespace primal
 			m_Buffer->texID = ts;
 			m_Buffer++;
 
-			m_IndexCount += 6;
+			m_IndexCount += 6;*/
 		}
 
 		void BatchRenderer2D::init()
@@ -206,8 +206,8 @@ namespace primal
 			glBindVertexArray(0);
 
 			/////////initialize font////////////
-			m_FTAtlas = ftgl::texture_atlas_new(512, 512, 1);
-			m_FTFont = ftgl::texture_font_new_from_file(m_FTAtlas, 20, "arial.ttf");
+	//		m_FTAtlas = ftgl::texture_atlas_new(512, 512, 1);
+	//		m_FTFont = ftgl::texture_font_new_from_file(m_FTAtlas, 20, "arial.ttf");
 
 		}
 
