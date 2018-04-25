@@ -85,7 +85,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include\;$(SolutionDir)Dependencies\GLEW\include\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;FT2_BUILD_LIBRARY;WIN32;_LIB;_MBCS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -110,7 +110,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include\;$(SolutionDir)Dependencies\GLEW\include\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;FT2_BUILD_LIBRARY;WIN32;_LIB;_MBCS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -141,6 +141,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ext\FreeType-GL\platform.c" />
+    <ClCompile Include="ext\FreeType-GL\texture-atlas.c" />
+    <ClCompile Include="ext\FreeType-GL\texture-font.c" />
+    <ClCompile Include="ext\FreeType-GL\vector.c" />
     <ClCompile Include="ext\FreeType\src\autofit\autofit.c" />
     <ClCompile Include="ext\FreeType\src\base\ftbase.c" />
     <ClCompile Include="ext\FreeType\src\base\ftbbox.c" />
@@ -203,6 +207,13 @@
     <ClCompile Include="src\maths\vec4.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ext\FreeType-GL\freetype-gl.h" />
+    <ClInclude Include="ext\FreeType-GL\opengl.h" />
+    <ClInclude Include="ext\FreeType-GL\platform.h" />
+    <ClInclude Include="ext\FreeType-GL\texture-atlas.h" />
+    <ClInclude Include="ext\FreeType-GL\texture-font.h" />
+    <ClInclude Include="ext\FreeType-GL\vec234.h" />
+    <ClInclude Include="ext\FreeType-GL\vector.h" />
     <ClInclude Include="ext\FreeType\include\config\ftconfig.h" />
     <ClInclude Include="ext\FreeType\include\config\ftheader.h" />
     <ClInclude Include="ext\FreeType\include\config\ftmodule.h" />

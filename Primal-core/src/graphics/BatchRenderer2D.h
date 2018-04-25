@@ -5,7 +5,7 @@
 #include "Renderable2D.h"
 #include "buffers\IndexBuffer.h"
 
-//#include "../../ext/FreeType-GL/freetype-gl.h"
+#include "../../ext/FreeType-GL/freetype-gl.h"
 
 namespace primal {
 	namespace graphics {
@@ -31,8 +31,8 @@ namespace primal {
 			VertexData * m_Buffer;
 			std::vector<GLuint> m_TextureSlots;
 
-//			ftgl::texture_atlas_t * m_FTAtlas;
-//			ftgl::texture_font_t * m_FTFont;
+			ftgl::texture_atlas_t * m_FTAtlas;
+			ftgl::texture_font_t * m_FTFont;
 		public:
 			BatchRenderer2D();
 			~BatchRenderer2D();

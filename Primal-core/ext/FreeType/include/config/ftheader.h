@@ -185,7 +185,7 @@
    *   It is included by @FT_FREETYPE_H.
    *
    */
-#define FT_ERRORS_H  "fterrors.h"
+#define FT_ERRORS_H  <fterrors.h>
 
 
   /*************************************************************************
