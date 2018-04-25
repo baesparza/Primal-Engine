@@ -14,3 +14,4 @@
 #include "layers\TileLayer.h"
 #include "layers\Group.h"
 #include "Texture.h"
+#include "Label.h"

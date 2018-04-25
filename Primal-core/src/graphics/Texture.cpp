@@ -14,6 +14,7 @@ namespace primal
 
 		Texture::~Texture()
 		{
+			glDeleteTextures(1, &m_TexID);
 		}
 
 		void Texture::bind() const

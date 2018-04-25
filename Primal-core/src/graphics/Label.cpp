@@ -4,7 +4,7 @@ namespace primal {
 	namespace graphics {
 
 		Label::Label(std::string text, float x, float y, maths::vec4 color)
-			:Renderable2D() ,m_Text(text)
+			:Renderable2D() ,text(text)
 		{
 			m_Position = maths::vec3(x, y, 0.f);
 			m_Color = color;
@@ -12,7 +12,7 @@ namespace primal {
 
 		void Label::submit(Renderer2D * renderer) const
 		{
-			renderer->drawString(m_Text, m_Position, m_Color);
+			renderer->drawString(text, m_Position, m_Color);
 		}
 
 	}

@@ -21,8 +21,7 @@ void main()
 	if (FS_IN.texID > 0.0)
 	{
 		int texID = int(FS_IN.texID - 0.5);
-		texColor = texture(textures[texID], FS_IN.texCoord);
-		//texColor = vec4(texID, 0, 0, 0);
+		texColor = FS_IN.color * texture(textures[texID], FS_IN.texCoord);
 	}
-	color = texColor; //* intensity;
+	color = texColor; // * intensity;
 }

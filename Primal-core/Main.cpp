@@ -22,7 +22,7 @@ int main()
 
 	TileLayer layer(shader);
 
-	Texture* textures[] = { new Texture("./res/images/test.png"), new Texture("./res/images/test2.jpg"), new Texture("./res/images/test3.png") };
+	Texture* textures[] = {new Texture("./res/images/test.png"), new Texture("./res/images/test2.jpg"), new Texture("./res/images/test3.png")};
 
 	for (float y = -9.0f; y < 9.0f; y++)
 	{
@@ -40,9 +40,14 @@ int main()
 	group->add(button);
 	layer.add(group);
 
+	Group* group2 = new Group(mat4::translation(vec3(-15.0f, 6.0f, 0)));
+	group2->add(new Sprite(0, 0, 6, 2, maths::vec4(0.8, 0.8, 0.8, 1)));
+	Label * fps = new Label("", 0.2, 0.6, vec4(0.7, 0.2, 1, 1));
+	group2->add(fps);
 
+	layer.add(group2);
 
-	GLint texIDs[] = { 0,1,2,3,4,5,6,7,8,9 };
+	GLint texIDs[] = {0,1,2,3,4,5,6,7,8,9};
 
 	shader->enable();
 	shader->setUniform1iv("textures", texIDs, 10);
@@ -59,7 +64,7 @@ int main()
 
 		shader->enable();
 		vec2 pos = Mouse::getPosition(window);
-		shader->setUniform2f("light_pos", vec2((float)(pos.x * 32.0f / 960.0f - 16.0f), (float)(9.0f - pos.y * 18.0f / 540.0f)));
+		shader->setUniform2f("light_pos", vec2((float) (pos.x * 32.0f / 960.0f - 16.0f), (float) (9.0f - pos.y * 18.0f / 540.0f)));
 		layer.render();
 
 		/////frame counter/////
@@ -69,6 +74,7 @@ int main()
 		{
 			timer += 1.0f;
 			printf("%d fps\n", frames);
+			fps->text = std::to_string(frames) + "fps";
 			frames = 0;
 		}
 	}
