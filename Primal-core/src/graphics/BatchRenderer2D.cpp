@@ -122,6 +122,13 @@ namespace primal
 		{
 			using namespace ftgl;
 
+			int r = color.x * 255.0f;
+			int g = color.y * 255.0f;
+			int b = color.z * 255.0f;
+			int a = color.w * 255.0f;
+
+			unsigned int col = a << 24 | b << 16 | g << 8 | r;
+
 			float ts = 0.0f;
 			bool found = false;
 			for (int i = 0; i < m_TextureSlots.size(); i++)
@@ -143,27 +150,53 @@ namespace primal
 				ts = (float) m_TextureSlots.size();
 			}
 
-			m_Buffer->vertex = maths::vec3(-8, -8, 0);
-			m_Buffer->texCoord = maths::vec2(0, 1);
-			m_Buffer->texID = ts;
-			m_Buffer++;
+			float scale = 0.05;
+			float x = position.x;
 
-			m_Buffer->vertex = maths::vec3(-8, 8, 0);
-			m_Buffer->texCoord = maths::vec2(0, 0);
-			m_Buffer->texID = ts;
-			m_Buffer++;
+			for (const char & c : text)
+			{
+				texture_glyph_t* glyph = texture_font_get_glyph(m_FTFont, c);
+				if (glyph)
+				{
+					float x0 = x + glyph->offset_x*scale;
+					float y0 = position.y + glyph->offset_y*scale;
+					float x1 = x0 + glyph->width		   *scale;
+					float y1 = y0 + glyph->height		   *scale;
 
-			m_Buffer->vertex = maths::vec3(0, 8, 0);
-			m_Buffer->texCoord = maths::vec2(1, 0);
-			m_Buffer->texID = ts;
-			m_Buffer++;
+					float u0 = glyph->s0;
+					float v0 = glyph->t0;
+					float u1 = glyph->s1;
+					float v1 = glyph->t1;
 
-			m_Buffer->vertex = maths::vec3(0, -8, 0);
-			m_Buffer->texCoord = maths::vec2(1, 1);
-			m_Buffer->texID = ts;
-			m_Buffer++;
+					m_Buffer->vertex = *m_TransformationBack * maths::vec3(x0, y0, 0);
+					m_Buffer->texCoord = maths::vec2(u0, v1);
+					m_Buffer->texID = ts;
+					m_Buffer->color = col;
+					m_Buffer++;
 
-			m_IndexCount += 6;
+					m_Buffer->vertex = *m_TransformationBack * maths::vec3(x0, y1, 0);
+					m_Buffer->texCoord = maths::vec2(u0, v0);
+					m_Buffer->texID = ts;
+					m_Buffer->color = col;
+					m_Buffer++;
+
+					m_Buffer->vertex = *m_TransformationBack * maths::vec3(x1, y1, 0);
+					m_Buffer->texCoord = maths::vec2(u1, v0);
+					m_Buffer->texID = ts;
+					m_Buffer->color = col;
+					m_Buffer++;
+
+					m_Buffer->vertex = *m_TransformationBack * maths::vec3(x1, y0, 0);
+					m_Buffer->texCoord = maths::vec2(u1, v1);
+					m_Buffer->texID = ts;
+					m_Buffer->color = col;
+					m_Buffer++;
+
+					m_IndexCount += 6;
+					x += glyph->advance_x * scale;
+				}
+			}
+
 		}
 
 		void BatchRenderer2D::init()
@@ -207,7 +240,8 @@ namespace primal
 
 			/////////initialize font////////////
 			m_FTAtlas = ftgl::texture_atlas_new(512, 512, 1);
-			m_FTFont = ftgl::texture_font_new_from_file(m_FTAtlas, 20, "./res/fonts/arial.ttf");
+			//	m_FTFont = ftgl::texture_font_new_from_file(m_FTAtlas, 80, "./res/fonts/Raleway-Regular.ttf");
+			m_FTFont = ftgl::texture_font_new_from_file(m_FTAtlas, 80, "./res/fonts/arial.ttf");
 
 		}
 
