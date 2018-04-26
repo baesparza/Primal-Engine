@@ -23,5 +23,5 @@ void main()
 		int texID = int(FS_IN.texID - 0.5);
 		texColor = FS_IN.color * texture(textures[texID], FS_IN.texCoord);
 	}
-	color = texColor * intensity;
+	color = texColor;// * intensity;
 }

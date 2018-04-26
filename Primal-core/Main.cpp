@@ -34,7 +34,7 @@ int main()
 	}
 
 	Group* group = new Group(mat4::translation(vec3(5.0f, 5.0f, 0)));
-	group->add(new Sprite(0, 0, 6, 3, maths::vec4(1, 1, 1, 1)));
+	group->add(new Sprite(0, 0, 6, 3, 0xffffff));
 	Group* button = new Group(mat4::translation(vec3(0.5f, 0.5f, 0.0f)));
 	button->add(new Sprite(0.f, 0.f, 5.f, 1.5f, textures[1]));
 	group->add(button);
@@ -42,8 +42,8 @@ int main()
 
 	///////fps counter//////
 	Group* group2 = new Group(mat4::translation(vec3(-15.0f, 6.0f, 0)));
-	group2->add(new Sprite(0, 0, 4.2, 1.2, maths::vec4(0.8, 0.8, 0.8, 0.4)));
-	Label * fps = new Label("", 0.2, 0.3, vec4(0.0, 1, 0, 1));
+	group2->add(new Sprite(0, 0, 4.2, 1.2, 0xdddddd99));
+	Label * fps = new Label("", 0.2, 0.3, 0xff00ff00);
 	group2->add(fps);
 
 	layer.add(group2);

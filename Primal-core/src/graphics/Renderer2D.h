@@ -45,7 +45,7 @@ namespace primal
 			virtual void end() { };
 			virtual void flush() = 0;
 
-			virtual void drawString(const std::string& text, const maths::vec3 & position, const maths::vec4& color) { };
+			virtual void drawString(const std::string& text, const maths::vec3 & position, unsigned int color) { };
 		};
 
 	}

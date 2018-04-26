@@ -72,13 +72,7 @@
     <ClCompile Include="src\graphics\Shader.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\Simple2DRenderer.cpp">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
     <ClCompile Include="src\graphics\Sprite.cpp">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\StaticSprite.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\Texture.cpp">
@@ -101,9 +95,6 @@
     </ClCompile>
     <ClCompile Include="src\graphics\Window.cpp">
       <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\Label.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ext\FreeType\src\autofit\autofit.c">
       <Filter>Source Files\ext\FreeType</Filter>
@@ -234,6 +225,9 @@
     <ClCompile Include="ext\FreeType-GL\vector.c">
       <Filter>Source Files\ext\FreeType-GL</Filter>
     </ClCompile>
+    <ClCompile Include="src\graphics\Label.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\BatchRenderer2D.h">
@@ -284,13 +278,7 @@
     <ClInclude Include="src\graphics\Shader.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\Simple2DRenderer.h">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
     <ClInclude Include="src\graphics\Sprite.h">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\StaticSprite.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\Texture.h">
@@ -316,9 +304,6 @@
     </ClInclude>
     <ClInclude Include="src\graphics\Window.h">
       <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\Label.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ext\FreeType\include\ft2build.h">
       <Filter>Header Files\ext\FreeType</Filter>
@@ -358,6 +343,9 @@
     </ClInclude>
     <ClInclude Include="ext\FreeType-GL\vector.h">
       <Filter>Header Files\ext\FreeType-GL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Label.h">
+      <Filter>Header Files\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

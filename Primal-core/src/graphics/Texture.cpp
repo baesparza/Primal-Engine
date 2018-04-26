@@ -7,9 +7,7 @@ namespace primal
 		Texture::Texture(const std::string & filename)
 			: m_Filename(filename)
 		{
-
 			m_TexID = load();
-
 		}
 
 		Texture::~Texture()

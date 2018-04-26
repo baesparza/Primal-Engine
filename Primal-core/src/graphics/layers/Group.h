@@ -16,6 +16,7 @@ namespace primal
 			Group(const maths::mat4& transform);
 			void submit(Renderer2D* renderer) const override;
 			void add(Renderable2D* renderable);
+			~Group();
 		};
 
 	}

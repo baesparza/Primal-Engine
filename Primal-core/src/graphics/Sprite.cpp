@@ -4,13 +4,13 @@ namespace primal
 {
 	namespace graphics
 	{
-		Sprite::Sprite(float x, float y, float widht, float heidth, const maths::vec4 color) :
+		Sprite::Sprite(float x, float y, float widht, float heidth, unsigned int color) :
 			Renderable2D(maths::vec3(x, y, 0), maths::vec2(widht, heidth), color)
 		{
 
 		}
 		Sprite::Sprite(float x, float y, float widht, float heidth, Texture* texture) :
-			Renderable2D(maths::vec3(x, y, 0), maths::vec2(widht, heidth), maths::vec4(1, 1, 1, 1))
+			Renderable2D(maths::vec3(x, y, 0), maths::vec2(widht, heidth), 0xffffffff)
 		{
 			m_Texture = texture;
 		}

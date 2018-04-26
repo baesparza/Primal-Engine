@@ -30,13 +30,13 @@ namespace primal
 		protected:
 			maths::vec3 m_Position;
 			maths::vec2 m_Size;
-			maths::vec4 m_Color;
+			unsigned int m_Color;
 			std::vector<maths::vec2> m_TexCoord;
 			Texture* m_Texture;
 		protected:
 			Renderable2D() :m_Texture(nullptr) { setTexCoordDefault(); }
 		public:
-			Renderable2D(maths::vec3 position, maths::vec2 size, maths::vec4 color) :
+			Renderable2D(maths::vec3 position, maths::vec2 size, unsigned int color) :
 				m_Position(position), m_Size(size), m_Color(color), m_Texture(nullptr)
 			{
 				setTexCoordDefault();
@@ -52,7 +52,7 @@ namespace primal
 
 			inline const maths::vec3& getPosition() const { return m_Position; };
 			inline const maths::vec2& getSize() const { return m_Size; };
-			inline const maths::vec4& getColor() const { return m_Color; };
+			inline const unsigned int getColor() const { return m_Color; };
 			inline const std::vector<maths::vec2>& getTexCoord() const { return m_TexCoord; };
 
 			inline const GLuint getTexID() const { return m_Texture ? m_Texture->getID() : 0; }
