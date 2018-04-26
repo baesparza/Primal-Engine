@@ -42,7 +42,7 @@ namespace primal
 			glfwSwapInterval(0.0);
 			glfwSetWindowUserPointer(m_Window, this);
 
-			glfwSetWindowSizeCallback(m_Window, [](GLFWwindow *wind, int w, int h) { glViewport(0, 0, w, h); });
+			glfwSetFramebufferSizeCallback(m_Window, [](GLFWwindow *win, int w, int h) { glViewport(0, 0, w, h); });
 			
 			if (glewInit() != GLEW_OK)
 			{
