@@ -31,6 +31,8 @@ namespace primal
 			vec4 multiply(const vec4& other) const;
 			friend vec4 operator*(const mat4& left, const vec4& right);
 
+			mat4& tempert();
+
 			static mat4 orthographic(float left, float right, float bottom, float top, float near, float far);
 			static mat4 perspective(float fov, float aspectRatio, float near, float far);
 
