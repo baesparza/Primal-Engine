@@ -1,11 +1,11 @@
 #include <time.h>
 
-#include "src\utils\fileutils.h"  
 #include "src\utils\Timer.h"         
+#include "src\graphics\graphics.h"
+#include "src\utils\fileutils.h"  
 #include "src\maths\maths.h"
 #include "src\input\Mouse.h"
 #include "src\input\Keyboard.h"
-#include "src\graphics\graphics.h"
 
 int main()
 {
